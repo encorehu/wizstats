@@ -124,9 +124,9 @@
 			$sql = "select * from (select orig_id,time from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 order by time desc limit 1) as a, (select time+'675 seconds'::interval as satime from $psqlschema.stats_shareagg where server=$serverid order by time desc limit 1) as b;";
 			$result = pg_exec($link, $sql);
 			$row = pg_fetch_array($result, 0);
-			$tempid = $row["orig_id"];
-			$temptime = $row["time"];
-			$temptime2 = $row["satime"];
+			$tempid = $row["orig_id"];//origin shares id in shares table
+			$temptime = $row["time"];//block time
+			$temptime2 = $row["satime"];//share agg time
 
 			# check cache for latest speed boost data
 			if ((!($livedataspeedup = apc_fetch("livedata.json - share count from $tempid"))) || ($nocache)){

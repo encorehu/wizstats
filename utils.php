@@ -241,7 +241,6 @@ function get_worker_data_from_user_id($link, $user_id) {
 		$result = pg_exec($link, $sql);
 		$numrows = pg_numrows($result);
 		if ($numrows > 0) {
-			echo '$numrows:',$numrows,'<br>';
 			# should always be at least 1...
 			$worker_data = array();
 			for($ri=0;$ri<$numrows;$ri++) {

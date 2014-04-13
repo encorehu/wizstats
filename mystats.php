@@ -250,7 +250,7 @@ if ($cmd) {
 					'Donate_Pool' => '',
 					'Donate_Stats' => '',
 					'Donate_Hosting' => '',
-					'NMC_Address' => '5',
+					'NMC_Address' => '',
 				);
 			}
 		} else {

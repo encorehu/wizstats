@@ -46,28 +46,28 @@
 
 		$instantjsondec = json_decode($livedata,true);
 
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-            break;
-            case JSON_ERROR_DEPTH:
-                echo ' - Maximum stack depth exceeded';
-            break;
-            case JSON_ERROR_STATE_MISMATCH:
-                echo ' - Underflow or the modes mismatch';
-            break;
-            case JSON_ERROR_CTRL_CHAR:
-                echo ' - Unexpected control character found';
-            break;
-            case JSON_ERROR_SYNTAX:
-                echo ' - Syntax error, malformed JSON';
-            break;
-            case JSON_ERROR_UTF8:
-                echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-            break;
-            default:
-                echo ' - Unknown error';
-            break;
-        }
+		switch (json_last_error()) {
+			case JSON_ERROR_NONE:
+			break;
+			case JSON_ERROR_DEPTH:
+				echo ' - Maximum stack depth exceeded';
+			break;
+			case JSON_ERROR_STATE_MISMATCH:
+				echo ' - Underflow or the modes mismatch';
+			break;
+			case JSON_ERROR_CTRL_CHAR:
+				echo ' - Unexpected control character found';
+			break;
+			case JSON_ERROR_SYNTAX:
+				echo ' - Syntax error, malformed JSON';
+			break;
+			case JSON_ERROR_UTF8:
+				echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+			break;
+			default:
+				echo ' - Unknown error';
+			break;
+		}
 		$phash = $instantjsondec["hashratepretty"];
 		$roundduration = $instantjsondec["roundduration"];
 		$sharesperunit = $instantjsondec["sharesperunit"];
@@ -117,110 +117,113 @@
 			} else {
 
 
-			$row = pg_fetch_array($result, 0);
+				$row = pg_fetch_array($result, 0);
 
-			$netdiff = $row["network_difficulty"];
-			# Get the share id of the last valid block we've found
-			$sql = "select * from (select orig_id,time from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 order by time desc limit 1) as a, (select time+'675 seconds'::interval as satime from $psqlschema.stats_shareagg where server=$serverid order by time desc limit 1) as b;";
-			$result = pg_exec($link, $sql);
-			$row = pg_fetch_array($result, 0);
-			$tempid = $row["orig_id"];//origin shares id in shares table
-			$temptime = $row["time"];//block time
-			$temptime2 = $row["satime"];//share agg time
+				$netdiff = $row["network_difficulty"];
+				# Get the share id of the last valid block we've found
+				$sql = "select * from (select orig_id,time from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 order by time desc limit 1) as a, (select time+'675 seconds'::interval as satime from $psqlschema.stats_shareagg where server=$serverid order by time desc limit 1) as b;";
+				$result = pg_exec($link, $sql);
+				if(pg_num_rows($result) == 0){
 
-			# check cache for latest speed boost data
-			if ((!($livedataspeedup = apc_fetch("livedata.json - share count from $tempid"))) || ($nocache)){
-				# no boost for this block yet, lets make it!
-				# this is kind of a kludge, bit should be close enough for the instastats...
-				$sql = "select (select sum(pow(2,targetmask-32)) from shares where server=$serverid and our_result=true and time > '$temptime' and time < to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675))+(select coalesce(sum(accepted_shares),0) from $psqlschema.stats_shareagg where time >= to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675) and server=$serverid)+(select coalesce(sum(pow(2,targetmask-32)),0) from shares where server=$serverid and our_result=true and time > '$temptime2' and time > to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675)) as instcount, (select id from shares where server=$serverid order by id desc limit 1) as latest_id;";
-				if ($nocache) { print $sql; }
-				$sqlescape = pg_escape_string($link, $sql);
-				$sqlcheck = "select count(*) as check from pg_stat_activity where query='$sqlescape'";
-				$result = pg_exec($link, $sqlcheck); $row = pg_fetch_array($result, 0);
-				$runningqueries = $row["check"];
-				$fetch = 1;
-				if ($runningqueries > 0) {
-					# someone else is already running this possibly intense query..
-					$done = 10;
-					while($done > 0) {
-						$done--;
-						sleep(1);
-						$livedataspeedup = apc_fetch("livedata.json - share count from $tempid");
-						if ($livedataspeedup != "") {
-								# woot, fruits of the other query's labor!
-								list($roundshares, $maxid) = explode(":", $livedataspeedup);
-								$done = 0; $fetch = 0;
+					$row = pg_fetch_array($result, 0);
+					$tempid = $row["orig_id"];//origin shares id in shares table
+					$temptime = $row["time"];//block time
+					$temptime2 = $row["satime"];//share agg time
+
+					# check cache for latest speed boost data
+					if ((!($livedataspeedup = apc_fetch("livedata.json - share count from $tempid"))) || ($nocache)){
+						# no boost for this block yet, lets make it!
+						# this is kind of a kludge, bit should be close enough for the instastats...
+						$sql = "select (select sum(pow(2,targetmask-32)) from shares where server=$serverid and our_result=true and time > '$temptime' and time < to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675))+(select coalesce(sum(accepted_shares),0) from $psqlschema.stats_shareagg where time >= to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675) and server=$serverid)+(select coalesce(sum(pow(2,targetmask-32)),0) from shares where server=$serverid and our_result=true and time > '$temptime2' and time > to_timestamp(((date_part('epoch', '$temptime'::timestamp without time zone)::integer / 675) * 675)+675)) as instcount, (select id from shares where server=$serverid order by id desc limit 1) as latest_id;";
+						if ($nocache) { print $sql; }
+						$sqlescape = pg_escape_string($link, $sql);
+						$sqlcheck = "select count(*) as check from pg_stat_activity where query='$sqlescape'";
+						$result = pg_exec($link, $sqlcheck); $row = pg_fetch_array($result, 0);
+						$runningqueries = $row["check"];
+						$fetch = 1;
+						if ($runningqueries > 0) {
+							# someone else is already running this possibly intense query..
+							$done = 10;
+							while($done > 0) {
+								$done--;
+								sleep(1);
+								$livedataspeedup = apc_fetch("livedata.json - share count from $tempid");
+								if ($livedataspeedup != "") {
+										# woot, fruits of the other query's labor!
+										list($roundshares, $maxid) = explode(":", $livedataspeedup);
+										$done = 0; $fetch = 0;
+								}
+							}
+						}
+						if ($fetch == 1) {
+							$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+							$roundshares = $row["instcount"];
+							$maxid = $row["latest_id"];
+							if (($roundshares > 0) && ($maxid > $tempid)) {
+								apc_store("livedata.json - share count from $tempid", "$roundshares:$maxid", 86400*7);
+							}
+						}
+					} else {
+						list($roundshares, $maxid) = explode(":", $livedataspeedup);
+						if ($maxid < $tempid) {
+							# should never happen, but just in case
+							print "{\"error\":\"$maxid < $tempid ... $livedataspeedup\"}\n";
+							exit();
+						}
+						# this should still be pretty fast after caching
+						$sql = "select sum(pow(2,targetmask-32)) as instcount, max(id) as latest_id from shares where server=$serverid and our_result=true and id > $maxid";
+						$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+						$roundshares += $row["instcount"];
+						$maxid = $row["latest_id"];
+						if (($roundshares > 0) && ($maxid > $tempid)) {
+							apc_store("livedata.json - share count from $tempid", "$roundshares:$maxid", 86400*7);
 						}
 					}
 				}
-				if ($fetch == 1) {
-					$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-					$roundshares = $row["instcount"];
-					$maxid = $row["latest_id"];
-					if (($roundshares > 0) && ($maxid > $tempid)) {
-						apc_store("livedata.json - share count from $tempid", "$roundshares:$maxid", 86400*7);
-					}
-				}
-			} else {
-				list($roundshares, $maxid) = explode(":", $livedataspeedup);
-				if ($maxid < $tempid) {
-					# should never happen, but just in case
-					print "{\"error\":\"$maxid < $tempid ... $livedataspeedup\"}\n";
-					exit();
-				}
-				# this should still be pretty fast after caching
-				$sql = "select sum(pow(2,targetmask-32)) as instcount, max(id) as latest_id from shares where server=$serverid and our_result=true and id > $maxid";
-				$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-				$roundshares += $row["instcount"];
-				$maxid = $row["latest_id"];
-				if (($roundshares > 0) && ($maxid > $tempid)) {
-					apc_store("livedata.json - share count from $tempid", "$roundshares:$maxid", 86400*7);
-				}
-			}
 
-			# get hashrate
-			if($cppsrbjsondec = apc_fetch('cppsrb_json_inst')) {
-				$hashrate256 = $cppsrbjsondec[""]["shares"][256] * 16777216;
-			} else {
-				if (filemtime("$pooldatadir/$serverid/cppsrb.json") > (time()-600)) {
-					$cppsrbjson = file_get_contents("$pooldatadir/$serverid/cppsrb.json");
-					$cppsrbjsondec = json_decode($cppsrbjson, true);
-					apc_store('cppsrb_json_inst', $cppsrbjsondec, 60);
+				# get hashrate
+				if($cppsrbjsondec = apc_fetch('cppsrb_json_inst')) {
 					$hashrate256 = $cppsrbjsondec[""]["shares"][256] * 16777216;
-
-					# note that CPPSRB is ok
-					apc_store('cppsrb_ok', 1, 60);
 				} else {
-					$sql2 = "select (date_part('epoch', (select time from $psqlschema.stats_shareagg where server=$serverid group by server,time order by time desc limit 1))::integer / 675::integer)::integer * 675::integer as sql2res";
-					$result = pg_exec($link, $sql2); $row = pg_fetch_array($result, 0);
-					$sql2res = $row["sql2res"];
+					if (filemtime("$pooldatadir/$serverid/cppsrb.json") > (time()-600)) {
+						$cppsrbjson = file_get_contents("$pooldatadir/$serverid/cppsrb.json");
+						$cppsrbjsondec = json_decode($cppsrbjson, true);
+						apc_store('cppsrb_json_inst', $cppsrbjsondec, 60);
+						$hashrate256 = $cppsrbjsondec[""]["shares"][256] * 16777216;
 
-					$sql = "select (sum(accepted_shares)*pow(2,32))/1350 as avghash,sum(accepted_shares) as share_total from $psqlschema.stats_shareagg where server=$serverid and time > to_timestamp($sql2res)-'1350 seconds'::interval";
-					$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-					$hashrate256 = $row["avghash"];
+						# note that CPPSRB is ok
+						apc_store('cppsrb_ok', 1, 60);
+					} else {
+						$sql2 = "select (date_part('epoch', (select time from $psqlschema.stats_shareagg where server=$serverid group by server,time order by time desc limit 1))::integer / 675::integer)::integer * 675::integer as sql2res";
+						$result = pg_exec($link, $sql2); $row = pg_fetch_array($result, 0);
+						$sql2res = $row["sql2res"];
+
+						$sql = "select (sum(accepted_shares)*pow(2,32))/1350 as avghash,sum(accepted_shares) as share_total from $psqlschema.stats_shareagg where server=$serverid and time > to_timestamp($sql2res)-'1350 seconds'::interval";
+						$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+						$hashrate256 = $row["avghash"];
 
 
-					# note that cppsrb is not ok
-					apc_store('cppsrb_ok', -1, 90);
+						# note that cppsrb is not ok
+						apc_store('cppsrb_ok', -1, 90);
+					}
+
 				}
 
-			}
-
-			# get latest block height
-			$sql = "select date_part('epoch',NOW() - time) as roundduration,height,confirmations from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 and height > 0 order by height desc limit 1;";
-			$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-			$blockheight = $row["height"];
-			$roundduration = $row["roundduration"];
-			$latestconfirms = $row["confirmations"];
+				# get latest block height
+				$sql = "select date_part('epoch',NOW() - time) as roundduration,height,confirmations from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 and height > 0 order by height desc limit 1;";
+				$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+				$blockheight = $row["height"];
+				$roundduration = $row["roundduration"];
+				$latestconfirms = $row["confirmations"];
 
 
-			$sharesperunit = ($hashrate256/4294967296)/20;
+				$sharesperunit = ($hashrate256/4294967296)/20;
 
-			$phash = prettyHashrate($hashrate256);
-			$datanew = 1;
-			$sql = "select pg_advisory_unlock(1000002) as l";
-			$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-		} // nodata in shares
+				$phash = prettyHashrate($hashrate256);
+				$datanew = 1;
+				$sql = "select pg_advisory_unlock(1000002) as l";
+				$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+			} // nodata in shares
 		}
 
 	}

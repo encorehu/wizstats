@@ -123,7 +123,7 @@
 				# Get the share id of the last valid block we've found
 				$sql = "select * from (select orig_id,time from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 order by time desc limit 1) as a, (select time+'675 seconds'::interval as satime from $psqlschema.stats_shareagg where server=$serverid order by time desc limit 1) as b;";
 				$result = pg_exec($link, $sql);
-				if(pg_num_rows($result) == 0){
+				if(pg_num_rows($result) > 0){
 
 					$row = pg_fetch_array($result, 0);
 					$tempid = $row["orig_id"];//origin shares id in shares table

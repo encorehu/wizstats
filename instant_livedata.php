@@ -211,8 +211,9 @@
 
 				# get latest block height
 				$sql = "select date_part('epoch',NOW() - time) as roundduration,height,confirmations from $psqlschema.stats_blocks where server=$serverid and confirmations > 0 and height > 0 order by height desc limit 1;";
+				$result = pg_exec($link, $sql);
 				if(pg_num_rows($result) > 0){
-				    $result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+				    $row = pg_fetch_array($result, 0);
 				    $blockheight = $row["height"];
 				    $roundduration = $row["roundduration"];
 				    $latestconfirms = $row["confirmations"];

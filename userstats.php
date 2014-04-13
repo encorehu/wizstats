@@ -123,6 +123,7 @@ if ($mybal) {
 		$row = pg_fetch_array($result, 0);
 		$bal = $row["balance"];
 		$ec = $row["credit"];
+		$lec = $ec;
 		$lbal = "N/A";
 		$datadate = $row["time"];
 		$everpaid = $row["everpaid"];

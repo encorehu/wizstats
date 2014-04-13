@@ -163,7 +163,7 @@ $maximum_reward = $everpaid + $estimated_balance + $shelved_shares_estimate + $s
 $unpaid_balance_print = prettySatoshis($unpaid_balance);
 $estimated_change_print = "+".prettySatoshis($estimated_change); # can/should never be negative...
 $estimated_balance_print = prettySatoshis($estimated_balance);
-if((($total_rewarded + $shelved_shares + $smppsec + $donated)==0){
+if(($total_rewarded + $shelved_shares + $smppsec + $donated)==0){
 	$percent_pps = 0;
 } else {
 	$percent_pps = $total_rewarded/($total_rewarded + $shelved_shares + $smppsec + $donated);

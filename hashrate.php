@@ -68,7 +68,8 @@ function get_hashrate_stats(&$link, $givenuser, $user_id)
 		$my_shares = $mycppsrb["shares"];
 	}
 
-	$globalccpsrb = $cppsrbjsondec[""];
+	#todo:what is $globalccpsrb????
+	#$globalccpsrb = $cppsrbjsondec[""];
 	$cppsrbloaded = 1;
 
 	# build up return value, an array of maps containing structured information about the hash rate over each interval

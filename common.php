@@ -33,7 +33,11 @@ function print_stats_top() {
 	$GLOBALS["sharesperunit"] = $sharesperunit;
 
 	$roundduration = format_time($roundduration);
-	$liveluck = round(($netdiff/$roundshares)*100);
+	if($roundshares > 0){
+	    $liveluck = round(($netdiff/$roundshares)*100);
+	} else {
+	    $liveluck = 0;
+	}
 	if ($liveluck > 9999) { $liveluck = ">9999%"; }
 
 	if (!isset($ldmain)) { $ldmain = ""; }

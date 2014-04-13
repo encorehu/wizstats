@@ -241,6 +241,8 @@ if ($cmd) {
 				$msgvars = str_replace(" ","&",$msgvars);
 				parse_str($msgvars, $msgvars_array);
 				$sig = $row["signature"];
+			} else {
+			    $msgvars_array=array();
 			}
 		} else {
 			$msg = $_GET["msg"];

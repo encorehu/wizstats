@@ -242,7 +242,14 @@ if ($cmd) {
 				parse_str($msgvars, $msgvars_array);
 				$sig = $row["signature"];
 			} else {
-			    $msgvars_array=array();
+				$msgvars_array=array(
+					'Nickname' => '',
+					'Minimum_Payout_BTC' => '0.001',
+					'Donate_Pool' => '',
+					'Donate_Stats' => '',
+					'Donate_Hosting' => '',
+					'NMC_Address' => '5',
+				);
 			}
 		} else {
 			$msg = $_GET["msg"];

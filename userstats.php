@@ -58,7 +58,7 @@ if (!$user_id) {
 	print_stats_top();
 	print "<BR><FONT COLOR=\"RED\"><B>Error:</B> Username <I>$givenuser</I> not found in database.  Please try again later., as the stats server is probably just overloaded. If this issue persists for several hours, please report it to the pool operator.</FONT><BR>";
 	print_stats_bottom();
-	exit;
+	//exit;
 }
 
 $worker_data = get_worker_data_from_user_id($link, $user_id);
@@ -76,7 +76,11 @@ if($balanacesjsondec = apc_fetch('balance')) {
 	// Store Cache for 10 minutes
 	apc_store('balance', $balanacesjsondec, 600);
 }
-$mybal = $balanacesjsondec[$givenuser];
+if($balanacesjsondec !== null){
+    $mybal = $balanacesjsondec[$givenuser];
+} else {
+    $mybal = null;
+}
 
 if ($mybal) {
 	if (isset($mybal["balance"])) {

@@ -242,6 +242,8 @@ if ($cmd) {
 				parse_str($msgvars, $msgvars_array);
 				$sig = $row["signature"];
 			} else {
+				$msg = '';
+				$sig = '';
 				$msgvars_array=array(
 					'Nickname' => '',
 					'Minimum_Payout_BTC' => '0.001',

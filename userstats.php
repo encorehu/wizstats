@@ -119,6 +119,8 @@ if ($mybal) {
 	if (!$numrows) {
 		$bal = "N/A"; $cbe = "N/A"; $ec = "N/A"; $datadate = "N/A"; $lbal = "N/A";
 		$lec=0;
+		$everpaid = 0;
+		$donated = 0;
 	} else {
 		$row = pg_fetch_array($result, 0);
 		$bal = $row["balance"];

@@ -233,7 +233,7 @@
 	}
 	//if (!($roundshares > 0)) { $roundshares = 0; }
 	// pay attention to below lines!!!!! debug use!
-	if (!($roundshares > 0)) { $roundshares = 1; }
+	if (!($roundshares > 0)) { $roundshares = 0; }
 
 	if(!$sharesperunit)$sharesperunit=1;
 	if(!$blockheight)$blockheight=1;

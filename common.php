@@ -46,6 +46,7 @@ function print_stats_top() {
 
 print("<HTML>
 <HEAD>
+<meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />
 <TITLE>".$localtitleprepend.$GLOBALS["poolname"]." Pool Statistics".$localtitleappend."</TITLE>
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">
 <!--[if lt IE 9]><script src=\"".$GLOBALS["urlprefix"]."IE9.js\"></script><![endif]-->

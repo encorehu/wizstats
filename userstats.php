@@ -77,9 +77,9 @@ if($balanacesjsondec = apc_fetch('balance')) {
 	apc_store('balance', $balanacesjsondec, 600);
 }
 if(count($balanacesjsondec) != 0){
-    $mybal = $balanacesjsondec[$givenuser];
+	$mybal = $balanacesjsondec[$givenuser];
 } else {
-    $mybal = null;
+	$mybal = null;
 }
 
 if ($mybal) {
@@ -163,9 +163,17 @@ $maximum_reward = $everpaid + $estimated_balance + $shelved_shares_estimate + $s
 $unpaid_balance_print = prettySatoshis($unpaid_balance);
 $estimated_change_print = "+".prettySatoshis($estimated_change); # can/should never be negative...
 $estimated_balance_print = prettySatoshis($estimated_balance);
+if((($total_rewarded + $shelved_shares + $smppsec + $donated)==0){
+	$percent_pps = 0;
+} else {
+	$percent_pps = $total_rewarded/($total_rewarded + $shelved_shares + $smppsec + $donated);
+}
+if($maximum_reward==0){
+	$percent_pps_estimate = 0;
+} else {
+	$percent_pps_estimate = ($estimated_balance+$everpaid)/$maximum_reward;
+}
 
-$percent_pps = $total_rewarded/($total_rewarded + $shelved_shares + $smppsec + $donated);
-$percent_pps_estimate = ($estimated_balance+$everpaid)/$maximum_reward;
 $percent_pps_estimated_change = $percent_pps_estimate - $percent_pps;
 
 $percent_pps_print = prettyProportion($percent_pps);
@@ -575,8 +583,8 @@ if ($savedbal) {
 
 		if ($u16avghash > 0) {
 			$sql = "select id,(pow(10,((29-$psqlschema.hex_to_int(substr(encode(solution,'hex'),145,2)))::double precision*2.4082399653118495617099111577959::double precision)+log(  (65535::double precision /  $psqlschema.hex_to_int(substr(encode(solution,'hex'),147,6)))::double precision   )::double precision))::double precision as network_difficulty from shares where server=$serverid and our_result=true order by id desc limit 1;";
-	                $result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-	                $netdiff = $row["network_difficulty"];
+					$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+					$netdiff = $row["network_difficulty"];
 
 			$shares = $diff / (2500000000/$netdiff);
 			$stime = $shares / ($u16avghash / 4294967296);
@@ -627,8 +635,8 @@ if ($savedbal) {
 if ($u16avghash > 0) {
 	if (!isset($netdiff)) {
 		$sql = "select id,(pow(10,((29-$psqlschema.hex_to_int(substr(encode(solution,'hex'),145,2)))::double precision*2.4082399653118495617099111577959::double precision)+log(  (65535::double precision /  $psqlschema.hex_to_int(substr(encode(solution,'hex'),147,6)))::double precision   )::double precision))::double precision as network_difficulty from shares where server=$serverid and our_result=true order by id desc limit 1;";
-                $result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
-                $netdiff = $row["network_difficulty"];
+		$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
+		$netdiff = $row["network_difficulty"];
 	}
 	$satoshiperday = round((($u16avghash*86400) / 4294967296)*(2500000000/$netdiff),0);
 	$netdiff = round($netdiff,2);

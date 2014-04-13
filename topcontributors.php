@@ -50,13 +50,13 @@ if ($cacheddata != "") {
 	$row = pg_fetch_array($result, 0);
 	$stime = $row["stime"];
 
-	$sql = "select (sum(accepted_shares)*pow(2,32))/10800 as avghash from $psqlschema.stats_shareagg where server=$serverid and time > '$stime'::timestamp without time zone";
+	$sql = "select (sum(accepted_shares)*pow(2,40))/10800 as avghash from $psqlschema.stats_shareagg where server=$serverid and time > '$stime'::timestamp without time zone";
 	$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
 	$poolhashrate3hr = $row["avghash"];
 
 
 
-	$sql = "select (sum(accepted_shares)*pow(2,32))/10800 as avghash, sum(accepted_shares) as sharecount, keyhash, min(users.id) as user_id from $psqlschema.stats_shareagg left join users on user_id=users.id where server=$serverid and time > '$stime'::timestamp without time zone and accepted_shares > 0 group by keyhash order by avghash desc $minilimit;";
+	$sql = "select (sum(accepted_shares)*pow(2,40))/10800 as avghash, sum(accepted_shares) as sharecount, keyhash, min(users.id) as user_id from $psqlschema.stats_shareagg left join users on user_id=users.id where server=$serverid and time > '$stime'::timestamp without time zone and accepted_shares > 0 group by keyhash order by avghash desc $minilimit;";
 	$result = pg_exec($link, $sql);
 	$numrows = pg_numrows($result);
 

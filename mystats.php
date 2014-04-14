@@ -96,7 +96,7 @@ if ($nouser == 1) {
 
 
 # ok, valid user in $u
-print "Welcome, $u! <BR>";
+print "欢迎你, 矿工( $u! )<BR>";
 
 
 if ($cmd) {

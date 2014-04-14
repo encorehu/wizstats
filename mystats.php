@@ -305,7 +305,7 @@ if ($cmd) {
 		</SCRIPT>
 
 		<BR><B>你必须使用一个支持给挖矿地址使用标准签名的比特币客户端来签名你的各个选项(如果你不能确定, 仅仅只想看看统计数据, 建议不要修改这里的配置)</b><BR>
-		比特币客户端 Bitcoin-qt 使用指南这里有一个: <A HREF="http://eligius.st/~capa66/utl/my_eligius/index.html">http://eligius.st/~capa66/utl/my_eligius/index.html</A><BR>
+		比特币客户端 Bitcoin-qt 使用指南, 请使用搜索引擎自行查找.<BR>
 		<BR><H3><U>选项表单</U></H3><SMALL>所有的填写项目都是可选的. 如果不填写, 将会使用矿池默认设置.</SMALL><BR><BR>
 		<FORM name="optionsform" onsubmit="return false;">
 		<TABLE BORDER=0>
@@ -326,7 +326,7 @@ if ($cmd) {
 		<div id="msgdiv"><?php echo htmlspecialchars($msg); ?></div><BR>
 		<input type="text" name="msg" size="128" value="<?php echo htmlspecialchars($msg); ?>"><BR>
 		<B>签名</B>:<BR><INPUT TYPE="text" size="128" name="sig" value="<?php echo htmlspecialchars($sig); ?>"><BR>
-		<input type="submit" value="Submit Changes!">
+		<input type="submit" value="提交修改!">
 		<input type="hidden" name="cmd" value="submitsig">
 		<input type="hidden" name="u" value="<?php echo $u; ?>">
 		</FORM>
@@ -338,12 +338,17 @@ if ($cmd) {
 		矿池将 *不会* 对经过有效签名确认提交的任何错误的/不需要的内容负责.<BR></B>
 		<BR>一些修改将会需要一个小时左右生效.
 		所有的修改将会在最慢生效的内容起作用后生效.
-		No changes are retroactive and all only apply from the time they are updated.  The pool reserves the right to remove any nickname it feels is inappropriate, at it's sole discretion.  This page is part of the public pool stats and anyone is able to view the settings here, along with the most recent signed message and signature for open verification.  However, settings can not be changed without a new valid signature.<BR><BR>
+		所有的修改都是不可追溯的, 只要修改, 内容将会更新, 服务器不会保存你的旧的设置.
+		如果你的昵称包含不合适的字符, 矿池保留对你的昵称进行清理的权力, 并由矿池自行决定何时清理以及如何清理.
+		本页面仅仅是矿池状态统计服务的使用条款的部分内容.
+		任何人在知道你的比特币挖矿地址的时候, 都可以查阅你在本站的设置带有公开验证的消息和签名, 但是设置内容在没有提供你的新签名的情况下是不可修改的.<BR><BR>
 		其他特定说明:<BR>
 		* 昵称 - 请保持清爽, 不要夹杂 URLs, 广告等推广内容. 这个将会显示在你的状态页面, 在地址的下方.<BR><BR>
-		* 最小工作困难度 - This option will have the pool use a best-effort attempt at serving work at or above this difficulty to your workers.  Due to the way Stratum handles authentication and work processing, you may still receive some difficulty 1 work at first because work is given before the pool knows who you are.  The pool reserves the right to reset this value to the pool default for any miner at any time at it's sole discretion.<BR><BR>
+		* 最小工作困难度 - 这个选项将会让矿池选择一个等于或者稍高于最低困难度的值, 来使你的矿工更好的工作.
+		由于 Stratum 处理认证和工作进程的方式决定了, 你在设置了最低困难度之后, 仍然会接收到困难度为 1 的工作, 因为矿池并不知道你是谁, 以及你的真实算力有多少.
+		对每一位矿工来说, 矿池保留任何时间重置这个值为矿池默认值的权力, 并由矿池自行决定如何设置和修改.<BR><BR>
 		* 最小支付金额 - 这个选项并不是及时生效的. 提交修改后24小时内, 你可能仍然在使用修改前的配置内容(或者默认值).<BR><BR>
-		* 可选赞助 %s - The various donation &quot;buckets&quot; each have their own bitcoin address which will be paid by the pool based on the standard payout queue.<BR><BR>
+		* 可选赞助 %s - 每一类赞助都有矿池内置的专有比特币地址接收, 将会由矿池通过标准的支付队列完成你的热心赞助.<BR><BR>
 		* NMC 合并挖矿地址 - 你对 Namecoin 的挖矿所得(Namecoin)将会支付到这个地址.
 		<HR>
 		<?php

@@ -24,7 +24,7 @@ else { if (isset($_COOKIE["u"])) { setcookie("u", $_COOKIE["u"], time()+86400*36
 
 if (!isset($link)) { $link = pg_pconnect("dbname=$psqldb user=$psqluser password='$psqlpass' host=$psqlhost"); }
 
-$titleprepend = "My $poolname - ";
+$titleprepend = "我的矿工状态 - ";
 
 if ((isset($_GET["cmd"])) && (strlen($_GET["cmd"]) > 0)) {
 	$cmd = $_GET["cmd"];
@@ -41,7 +41,7 @@ if ($cmd == "logout") {
 
 print_stats_top();
 
-print "<H2>$poolname 矿池控制面板</H2><HR><BR>";
+print "<H2> $poolname 矿池控制面板</H2><HR><BR>";
 
 if ($cmd == "logout") {
 	print "注销成功.<BR>";

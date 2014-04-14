@@ -71,7 +71,7 @@ for($ri = 0; $ri < $numrows; $ri++) {
 		$confs = 120;
 	}
 
-	if($row["roundstart"]==""){echo 'roundstart is empty'}
+	if($row["roundstart"]==""){echo 'roundstart is empty';}else{echo 'roundstart is ',$row["roundstart"];}
 
 	print "XXX: ".$row["roundstart"]."-".$row["acceptedshares"]."\n";
 

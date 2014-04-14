@@ -32,7 +32,7 @@ if (strlen($announce) > 0) {
 例如, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
 <BR><BR>
 <BR>
-<CENTER><H3>最近的 Blocks</H3></CENTER>
+<CENTER><H3>最近的块</H3></CENTER>
 
 <?php
 	# Display partial block list on main page
@@ -70,7 +70,7 @@ if (strlen($announce) > 0) {
 	'hashrate': {fillGraph: true },
 	labelsDivStyles: { border: '1px solid black' },
 	title: '矿池算力统计',
-	xlabel: 'Date',
+	xlabel: '时间',
 	ylabel: 'Hashes/sec',
 	animatedZooms: true,
 	includeZero: true,

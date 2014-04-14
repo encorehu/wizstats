@@ -68,10 +68,10 @@ print("<HTML>
 <TABLE class=\"lucktable\" width=\"100%\">
 <TR>
 <TD width=\"30%\" style=\"text-align: left\">算力:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px; white-space: nowrap;\" id=\"livehashrate\">$phash</TD>
-<TD width=\"25%\" style=\"text-align: left\">持续时间:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"roundtime\">$roundduration</TD>
+<TD width=\"25%\" style=\"text-align: left\">本轮时间:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"roundtime\">$roundduration</TD>
 </TR>
 <TR>
-<TD width=\"30%\" style=\"text-align: left\">Shares:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px;\" id=\"sharecounter\">$roundshares</TD>
+<TD width=\"30%\" style=\"text-align: left\">股份:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px;\" id=\"sharecounter\">$roundshares</TD>
 <TD width=\"25%\" style=\"text-align: left\">运气:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"liveluck\">$liveluck%</TD>
 </TR>
 </TABLE>
@@ -84,8 +84,8 @@ print("<HTML>
 <center>
 <ul id=\"menu\">
     <li><a href=\"".$GLOBALS["urlprefix"]."\">首页</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">我的矿工状态</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."blocks.php\">Blocks</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">我的状态</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."blocks.php\">块</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">贡献者</a></li>
 </ul>
 </center>

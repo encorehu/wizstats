@@ -35,7 +35,7 @@ $result = pg_exec($link, $sql);
 $numrows = pg_numrows($result);
 
 
-$tdata = "date,hashrate,hashrate3hr,hashrate12hr\n";
+$tdata = "日期,算力,3小时,12小时\n";
 print $tdata;
 
 

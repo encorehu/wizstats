@@ -43,8 +43,8 @@ function block_table_header() {
 	$blocks_header .= "<TH>算力</TH>";
 	$blocks_header .= "<TH>确认数</TH>";
 	$blocks_header .= "<TH>贡献者</TH>";
-	$blocks_header .= "<TH>Block 高度</TH>";
-	$blocks_header .= "<TH>Block Hash</TH>";
+	$blocks_header .= "<TH>区块高度</TH>";
+	$blocks_header .= "<TH>区块哈希</TH>";
 	$blocks_header .= "</TR>";
 	$blocks_header .= "</thead>";
 	return $blocks_header;

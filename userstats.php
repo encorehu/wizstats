@@ -425,7 +425,7 @@ print "<script type=\"text/javascript\">
 		'3 hour': { fillGraph: false, strokeWidth: 2.25, color: '#400080' },
 		'12 hour': { fillGraph: false, strokeWidth: 2.25, color: '#008080' },
 		labelsDivStyles: { border: '1px solid black' },
-		title: 'Hashrate Graph ($givenuser)',
+		title: '算力图 ($givenuser)',
 		xlabel: 'Date',
 		ylabel: 'Mh/sec',
 		animatedZooms: true,
@@ -539,7 +539,7 @@ print "<BR><BR><HR>";
 
 if ($savedbal) {
 
-	print "<BR><B>Estimated Position in Payout Queue</B><BR>";
+	print "<BR><B>在支付队列中预计所处位置</B><BR>";
 	if ($payoutqueue = apc_fetch('wizstats_payoutqueuetxt')) {
 	} else {
 		$payoutqueue = file_get_contents("$pooldatadir/$serverid/payout_queue.txt");

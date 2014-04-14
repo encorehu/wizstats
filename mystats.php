@@ -62,7 +62,7 @@ if (((!isset($_COOKIE["u"])) && (!isset($_GET["u"]))) || ( (isset($_GET["u"])) &
 
 	if (!$user_id) {
 		$nouser = 1;
-		$reason = "$u was not found in database.<BR>";
+		$reason = "$u 没有在数据库中找到! <BR><BR>";
 	}
 }
 

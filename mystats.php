@@ -41,7 +41,7 @@ if ($cmd == "logout") {
 
 print_stats_top();
 
-print "<H2>My $poolname Control Panel</H2><HR><BR>";
+print "<H2>我的 $poolname Control Panel</H2><HR><BR>";
 
 if ($cmd == "logout") {
 	print "Logout successful.<BR>";

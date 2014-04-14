@@ -69,7 +69,7 @@ if (strlen($announce) > 0) {
    	{ strokeWidth: 2.25,
 	'hashrate': {fillGraph: true },
 	labelsDivStyles: { border: '1px solid black' },
-	title: '<?php echo $poolname; ?> Hashrate Graph',
+	title: '<?php echo $poolname; ?> 矿池算力统计',
 	xlabel: 'Date',
 	ylabel: 'Hashes/sec',
 	animatedZooms: true,
@@ -82,7 +82,7 @@ if (strlen($announce) > 0) {
 </script>
 <BR>
 <div id="line"></div>
-<CENTER><H3><?php echo $poolname; ?> Reward Variance</H3></CENTER>
+<CENTER><H3><?php echo $poolname; ?> 矿池报酬变动</H3></CENTER>
 <div id="graphdiv4" style="width:100%; height:150px;"></div>
 <script type="text/javascript">
   g3 = new Dygraph(
@@ -112,10 +112,10 @@ if (strlen($announce) > 0) {
 	}
   );
 </script>
-<SMALL>(These graphs shows the estimated earnings, as a percentage of maximum PPS, of a hypothetical 1GH miner who started mining at <?php echo $poolname; ?> at block height 210000.)</SMALL><BR>
+<SMALL>(此图以相对于最大每股支付PPS的预估百分比的形式显示了矿池的挖矿收入, 以 1GH/s 算力的矿工在Block 高度为210000开始在<?php echo $poolname; ?>挖矿作为参考)</SMALL><BR>
 
 <BR><div id="line"></div>
-<H3><CENTER>Top Miners (3 hr rate) <A HREF="topcontributors.php">(Full)</A></CENTER></H3>
+<H3><CENTER>顶级大算力矿工 (3 小时平均算力) <A HREF="topcontributors.php">(查看全部)</A></CENTER></H3>
 
 <?php
 	# Display partial contributor list on main page

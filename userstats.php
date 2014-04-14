@@ -205,7 +205,7 @@ if (($nickname != "") && ($nickname != $givenuser)) {
 
 print "<div id=\"userstatsmain\">";
 print "<TABLE class=\"userstatsbalance\">";
-print "<THEAD><TR><TH></TH><TH>Unpaid Balance</TH><TH><A HREF=\"http://eligius.st/wiki/index.php/Capped_PPS_with_Recent_Backpay\">Shares Rewarded</A></TH></TR></THEAD>";
+print "<THEAD><TR><TH></TH><TH>未支付的余额</TH><TH><A HREF=\"http://eligius.st/wiki/index.php/Capped_PPS_with_Recent_Backpay\">股份报酬</A></TH></TR></THEAD>";
 print "<TR class=\"userstatsodd\"><TD>As of last block: </TD><TD style=\"text-align: right;\">$unpaid_balance_print</TD><TD style=\"text-align: right; font-size: 80%;\">$percent_pps_print</TD></TR>";
 print "<TR class=\"userstatseven\"><TD>Estimated Change: </TD><TD style=\"text-align: right;\">$estimated_change_print</TD><TD style=\"text-align: right; font-size: 80%;\">$percent_pps_estimate_change_print</TD></TR>";
 print "<TR class=\"userstatsodd\"><TD>Estimated Total: </TD><TD style=\"text-align: right;\">$estimated_balance_print</TD><TD style=\"text-align: right; font-size: 80%;\">$percent_pps_estimate_print</TD></TR>";
@@ -221,7 +221,7 @@ if ($hashratetable != "") {
 	$hashrate_info = get_hashrate_stats($link, $givenuser, $user_id);
 
 	$pdata = "<TABLE class=\"userstatshashrate\">";
-	$pdata .= "<THEAD><TR><TH WIDTH=\"34%\"></TH><TH WIDTH=\"33%\">Hashrate Average</TH><TH WIDTH=\"33%\"><span title=\"Weighted shares are the number of shares accepted by the pool multiplied by the difficulty of the work that was given.  This number is essentially the equivalent difficulty 1 shares submitted to the pool.\" style=\"border-bottom: 1px dashed #888888\">Weighted Shares</span></TH></TR></THEAD>";
+	$pdata .= "<THEAD><TR><TH WIDTH=\"34%\"></TH><TH WIDTH=\"33%\">算力平均值</TH><TH WIDTH=\"33%\"><span title=\"Weighted 股份是矿池接受的股份数量 乘以 矿工提供的困难度, 基本上是相当于困难度为1的时候, 矿机提交给矿池的股份数量.\" style=\"border-bottom: 1px dashed #888888\">Weighted 股份</span></TH></TR></THEAD>";
 
 	$oev = "even";
 
@@ -262,7 +262,7 @@ if ($rejecttable != "") {
 	$result = pg_exec($link, $sql);
 	$numrows = pg_numrows($result);
 	$pdata = "<TABLE class=\"userstatsrejects\" id=\"rejectdata\">";
-	$pdata .= "<THEAD><TR><TH STYLE=\"font-size: 70%;\" id=\"expandarea\"></TH><TH><SPAN title=\"Rejected share counts here are absolute counts and are not weighted.\" style=\"border-bottom: 1px dashed #888888\">Rejected Shares</span></TH></TR></THEAD>";
+	$pdata .= "<THEAD><TR><TH STYLE=\"font-size: 70%;\" id=\"expandarea\"></TH><TH><SPAN title=\"Rejected share counts here are absolute counts and are not weighted.\" style=\"border-bottom: 1px dashed #888888\">拒绝的股份</span></TH></TR></THEAD>";
 	if ($numrows) {
 		$t = 0;
 		$rejectdetails = "";
@@ -277,7 +277,7 @@ if ($rejecttable != "") {
 			$toggles .= "\$('#rejectitem$ri').toggle();\n";
 			$oev = $oev=="even"?$oev="odd":$oev="even";
 		}
-		$pdata .= "<TR class=\"userstatseven\"><TD>675-second Total</TD><TD class=\"rtnumbers\">$t</TD></TR>";
+		$pdata .= "<TR class=\"userstatseven\"><TD>675秒总计</TD><TD class=\"rtnumbers\">$t</TD></TR>";
 		$pdata .= $rejectdetails;
 		$pdata .= "</TABLE>";
 		$pdata .= "<script language=\"javascript\">\n<!--\n";
@@ -295,7 +295,7 @@ if ($rejecttable != "") {
 			});\n";
 		$pdata .= "\n--></script>\n";
 	} else {
-		$pdata .= "<TR class=\"userstatseven\"><TD>675-second Total</TD><TD class=\"rtnumbers\">0</TD></TR>";
+		$pdata .= "<TR class=\"userstatseven\"><TD>675秒总计</TD><TD class=\"rtnumbers\">0</TD></TR>";
 		$pdata .= "</TABLE>";
 	}
 	print $pdata;
@@ -391,7 +391,7 @@ if (count($worker_data) > 1) {
 		$pdata = "";
 		if ($table != "") {
 
-			$pdata .= "<INPUT TYPE=\"BUTTON\" onClick=\"\$('#workeritems').toggle();\" VALUE=\"Toggle Display of Worker Details\"><BR><BR>";
+			$pdata .= "<INPUT TYPE=\"BUTTON\" onClick=\"\$('#workeritems').toggle();\" VALUE=\"切换矿工明细\"><BR><BR>";
 			$pdata .= "<TABLE id=\"workeritems\" class=\"userstatsworkers\"><THEAD><TH  style=\"text-align: left;\">Worker Name</TH><TH  style=\"text-align: right;\">Hashrate</TH><TH  style=\"text-align: right;\">Accepted Weighted Shares</TH></THEAD>$table";
 			if ($idleworkers) {
 				$idlelist = substr($idlelist,1,strlen($idlelist)-2).".";
@@ -460,7 +460,7 @@ print "<script type=\"text/javascript\">
 		strokeWidth: 2.25,
 		fillGraph: true,
 		labelsDivStyles: { border: '1px solid black' },
-		title: 'Balance Graph ($givenuser)',
+		title: '余额图 ($givenuser)',
 		xlabel: 'Date',
 		ylabel: 'BTC',
 		animatedZooms: true,
@@ -498,7 +498,7 @@ print "</div>";
 print "<div id=\"userstatsright\">";
 
 
-print "<B>Latest Payouts</B>";
+print "<B>最新支付</B>";
 
 if ($everpaid > 0) {
 
@@ -527,7 +527,7 @@ if ($everpaid > 0) {
 		if ($xdata != "") {
 			$pdata = "<table id=\"paymentlist\"><THEAD><TR><TH>Date (<SPAN title=\"G = Payout from coinbase/generation; S = Payout from normal send/sendmany\" style=\"border-bottom: 1px dashed #888888\">Type</SPAN>)</TH><TH>Amount</TH></TR></THEAD>$xdata</table>";
 		} else {
-			$pdata = "<BR>No recent data available.<BR>";
+			$pdata = "<BR>没有可用的最新支付数据.<BR>";
 		}
 		print $pdata;
 		# cache this data for 24 hours. if the user is paid, the hash will change and invalidate this forcing a rebuild. genius!
@@ -537,7 +537,7 @@ if ($everpaid > 0) {
 	print "<BR>没有可用数据.<BR>";
 }
 
-print "All time total payout: ".prettySatoshis($everpaid);
+print "历史全部支付总量: ".prettySatoshis($everpaid);
 if ($donated > 0) {
 	print "<BR><FONT SIZE=\"-1\">Total donated Eligius: ".prettySatoshis($donated)." - <I>Thanks!</I></FONT>";
 }

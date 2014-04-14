@@ -116,8 +116,8 @@ function getBE() {
  * @return string a human-readable version of the same duration
  */
 function prettyDuration($duration, $align = false, $precision = 4) {
-	if($duration < 60) return "几秒前";
-	else if($duration < 300) return "几分钟前";
+	if($duration < 60) return "几秒";
+	else if($duration < 300) return "几分钟";
 
 	$units = array("month" => 30.5 * 86400, "week" => 7*86400, "day" => 86400, "hour" => 3600, "minute" => 60);
 
@@ -149,8 +149,8 @@ function prettyDuration($duration, $align = false, $precision = 4) {
 }
 
 function prettyDurationshort($duration, $align = false, $precision = 4) {
-	if($duration < 60) return "几秒前";
-	else if($duration < 300) return "几分钟前";
+	if($duration < 60) return "几秒";
+	else if($duration < 300) return "几分钟";
 
 	$units = array("mon" => 30.5 * 86400, "wk" => 7*86400, "day" => 86400, "hr" => 3600, "min" => 60);
 

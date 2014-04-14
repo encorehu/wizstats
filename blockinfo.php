@@ -59,7 +59,7 @@ $txcount = count($block["tx"]);
 
 print "<TABLE BORDER=1>";
 
-print "<TR><TD><B>区块哈希:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">去 Blockchain.info 查看</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">去 Blockexplorer.com 查看</A></TD></TR>";
+print "<TR><TD><B>区块哈希:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">去 Blockchain.info 查看区块</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">去 Blockexplorer.com 查看区块</A></TD></TR>";
 print "<TR><TD><B>区块高度:</B></TD><TD>{$block["height"]}</TD></TR>";
 print "<TR><TD><B>上一区块哈希:</B></TD><TD>{$block["previousblockhash"]}</TD></TR>";
 print "<TR><TD><B>Merkle root:</B></TD><TD>{$block["merkleroot"]}</TD></TR>";
@@ -83,7 +83,7 @@ print "<TR><TD><B>时间:</B></TD><TD>$t</TD></TR>";
 
 print "<TR><TD><B>内含交易数:</B></TD><TD>$txcount</TD></TR>";
 print "<TR><TD><B>区块字节大小:</B></TD><TD>{$block["size"]} bytes</TD></TR>";
-print "<TR><TD><B>Coinbase 交易ID:</B></TD><TD>{$block["tx"][0]}<BR><A HREF=\"http://blockchain.info/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
+print "<TR><TD><B>Coinbase 交易ID:</B></TD><TD>{$block["tx"][0]}<BR><A HREF=\"http://blockchain.info/tx/{$block["tx"][0]}\" TARGET=\"_blank\">去 Blockchain.info 查看交易</A> - <A HREF=\"http://blockexplorer.com/tx/{$block["tx"][0]}\" TARGET=\"_blank\">去 Blockexplorer.com 查看交易</A></TD></TR>";
 
 
 $cbtxid = $block["tx"][0];

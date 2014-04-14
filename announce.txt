@@ -1,1 +1,1 @@
-Welcome to use $GLOBALS["poolname"]
+Welcome to using our bitcoin mining pool!

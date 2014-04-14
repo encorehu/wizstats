@@ -561,7 +561,7 @@ if ($savedbal) {
 
 
 		if ($diff < 0) { $diff = 0; }
-		print "Approximately ".prettySatoshis($diff)." remaining to enter <A HREF=\"http://eligius.st/~wizkid057/newstats/payoutqueue.php#$givenuser\">payout queue</a>.";
+		print "Approximately ".prettySatoshis($diff)." remaining to enter <A HREF=\"".$GLOBALS["urlprefix"]."payoutqueue.php#$givenuser\">payout queue</a>.";
 
 		if (($u16avghash == 0) && (isset($balupdate))) {
 			$timetoqueue = (3600*24*7) - (time() - $balupdate);

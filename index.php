@@ -28,7 +28,7 @@ if (strlen($announce) > 0) {
 ?>
 
 
-For individual stats, use <?php echo $urlprefix;?></>newstats/userstats.php/[your miner address] for individual stats.<BR>
+For individual stats, use <?php echo $urlprefix;?>userstats.php/[your miner address] for individual stats.<BR>
 For example, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
 <BR><BR>
 <BR>

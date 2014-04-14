@@ -135,7 +135,7 @@ for($ri = 0; $ri < $numrows; $ri++) {
 
 		# count block shares exactly using vardiff for POT targetmask...
 		#$sql = "select sum(pow(2,targetmask-32)) as blockshares from shares where server=$serverid and our_result=true and id > $orig_id2 and id <= $orig_id;";
-		$sql = "select sum(pow(2,40)) as blockshares from shares where server=$serverid and our_result=true and id > $orig_id2 and id <= $orig_id;";
+		$sql = "select 0+SUM(our_result::integer) as blockshares from shares where server=$serverid and our_result=true and id > $orig_id2 and id <= $orig_id;";
 		print "SQL C: $sql\n";
 		$result2 = pg_exec($link2, $sql);
 		$row2 = pg_fetch_array($result2, 0); # does NOT include rejects....

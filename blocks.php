@@ -33,9 +33,9 @@ if (!isset($subcall)) {
 	}
 
 	if (!$blocks_show_stale) {
-		print "<SMALL><A HREF=\"?show_stale=1\">(Show stale/orphan blocks in list)</A></SMALL><BR>";
+		print "<SMALL><A HREF=\"?show_stale=1\">(显示 stale/orphan blocks )</A></SMALL><BR>";
 	} else {
-		print "<SMALL><A HREF=\"?show_stale=0\">(Hide stale/orphan blocks in list)</A></SMALL><BR>";
+		print "<SMALL><A HREF=\"?show_stale=0\">(隐藏 stale/orphan blocks )</A></SMALL><BR>";
 	}
 
 
@@ -48,7 +48,7 @@ if (isset($blocklimit)) {
 } else {
 	###$blim = "limit 10";
 	$blim = "";
-	print "<SMALL>Click on a header item to sort the list</SMALL><BR><BR>";
+	print "<SMALL>点击表格标题可以对数据进行排序</SMALL><BR><BR>";
 }
 
 

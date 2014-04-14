@@ -1,5 +1,10 @@
 body {
-font-family: Arial, "Helvetica", sans-serif;
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+font-family: Lucida Grande, Microsoft Yahei, Arial, Calibri, Trebuchet MS, Helvetica, Hiragino, STHeiti, Microsoft Jhenghei, sans-serif;
+font-size: 13px;
 color: #3B4033;
 background-color:#D6E1C7;
 }

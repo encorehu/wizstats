@@ -113,7 +113,7 @@ print "<TABLE BORDER=1>";
 
 $failsafe = 0;
 $total = 0;
-
+$oe == 0;
 for($i=0;$i<$cbouts;$i++) {
 
 	$out = $cbtx["vout"][$i];
@@ -148,6 +148,7 @@ for($i=0;$i<$cbouts;$i++) {
 	} else {
 		$address = "<A HREF=\"../userstats.php/$addr\">$addr</A>";
 	}
+	if ($oe == 1) { $oclass = "class=\"odd\""; $oe = 0; } else { $oclass = "class=\"notodd\""; $oe = 1; }
 	print "<TR HEIGHT=\"38\" $oclass><TD>$address</TD><TD>$pammt</TD></TR>";
 	$total += $ammt*100000000;
 

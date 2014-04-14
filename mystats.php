@@ -24,7 +24,7 @@ else { if (isset($_COOKIE["u"])) { setcookie("u", $_COOKIE["u"], time()+86400*36
 
 if (!isset($link)) { $link = pg_pconnect("dbname=$psqldb user=$psqluser password='$psqlpass' host=$psqlhost"); }
 
-$titleprepend = "我的矿工状态 - ";
+$titleprepend = "我的状态 - ";
 
 if ((isset($_GET["cmd"])) && (strlen($_GET["cmd"]) > 0)) {
 	$cmd = $_GET["cmd"];
@@ -41,7 +41,7 @@ if ($cmd == "logout") {
 
 print_stats_top();
 
-print "<H2> $poolname 矿池控制面板</H2><HR><BR>";
+print "<H2>矿池控制面板</H2><HR><BR>";
 
 if ($cmd == "logout") {
 	print "注销成功.<BR>";
@@ -82,12 +82,12 @@ if ($nouser == 1) {
 	}
 	?>
 	<?php echo $reason; ?>
-	想查看 <I>矿工状态</I> 你必须指定你在 <?php echo $poolname; ?> 矿池的挖矿用的比特币地址.<BR>
+	想查看 <I>矿工状态</I> 你必须指定你在本矿池挖矿用的比特币地址.<BR>
 	<BR>
 
 	<FORM METHOD="GET">挖矿用的比特币地址: <INPUT TYPE="text" name="u" size=40 maxlength=512><BR>
 	<input type="checkbox" name="storecookie" CHECKED> 保存挖矿用的比特币地址在浏览器的Cookie里吗? (保存请打勾)<BR>
-	<input type="submit" value="去查看我的矿工状态!">
+	<input type="submit" value="去查看我的状态!">
 	</FORM>
 
 	<?php
@@ -96,7 +96,7 @@ if ($nouser == 1) {
 
 
 # ok, valid user in $u
-print "欢迎你, 矿工( $u! )<BR>";
+print "欢迎你, $u!<BR>";
 
 
 if ($cmd) {
@@ -352,7 +352,7 @@ if ($cmd) {
 
 ?>
 
-<A HREF="mystats.php?cmd=menu">我的矿工状态菜单</A><BR>
+<A HREF="mystats.php?cmd=menu">我的状态菜单</A><BR>
 <A HREF="mystats.php?cmd=logout">注销</A><BR>
 
 <?php print_stats_bottom(); ?>

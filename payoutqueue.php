@@ -24,7 +24,7 @@ print "<H2>Payout Queue</H2><BR>";
 	}
 
 	$qt = "<TABLE BORDER=1 id=\"blocklisttable\" CLASS=\"blocklist\">";
-	$qt .= "<THEAD><TR><TH>Number</TH><TH>Address</TH><TH>Age</TH><TH>Balance</TH></TR></THEAD>";
+	$qt .= "<THEAD><TR><TH>序号</TH><TH>地址</TH><TH>年龄</TH><TH>余额</TH></TR></THEAD>";
 	$total = 0; $alltotal = 0; $blocks = 1;
 	$oddeven = 1; $oe = " class=\"blockconfirmed\"";
 	$paynum = 1;

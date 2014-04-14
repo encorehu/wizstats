@@ -123,7 +123,7 @@ function block_table_row($row,$isodd) {
 		$address = substr($fulladdress,0,10)."...";
 	} else {
 		$fulladdress = "";
-		$address = "(Unknown user)";
+		$address = "(未知用户)";
 	}
 	$blocks_row .= "<TD style=\"font-family:monospace;\"><A HREF=\"userstats.php/".$fulladdress."\">".$address."</A></TD>";
 

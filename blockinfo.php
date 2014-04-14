@@ -4,7 +4,7 @@ require_once 'includes.php';
 
 if (!isset($_SERVER['PATH_INFO'])) {
 	print_stats_top();
-	print "<BR><FONT COLOR=\"RED\"><B>Error:</B> No blockhash specified in URL path  Please try again.</FONT><BR>";
+	print "<BR><FONT COLOR=\"RED\"><B>错误:</B> URL 路径中未指定 blockhash, 请指定后再试.</FONT><BR>";
 	print_stats_bottom();
 	exit;
 }

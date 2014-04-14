@@ -62,7 +62,7 @@ print("<HTML>
 <div id=\"wrapper\">
 <div id=\"Eligius-Title\">
 	<H2><A HREF=\"".$GLOBALS["urlprefix"]."\">".$GLOBALS["poolname"]." Pool Statistics</A></H2><!--[if IE]><BR><![endif]-->
-	<h4>Donations to help stats development:<BR><B>1Stats</B>Qytc7UEZ9sHJ9BGX2csmkj8XZr2</h4>
+	<h4>Donations to help stats development:<BR><B>12Xx9</B>WhredZ29o7LUGEdj4J5f4tXwLD9QQ</h4>
 </div>
 <div id=\"luck\">
 <TABLE class=\"lucktable\" width=\"100%\">

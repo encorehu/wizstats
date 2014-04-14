@@ -28,11 +28,11 @@ if (strlen($announce) > 0) {
 ?>
 
 
-For individual stats, use <?php echo $urlprefix;?>userstats.php/[your miner address] for individual stats.<BR>
-For example, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
+查看独立矿工状态, 使用 <?php echo $urlprefix;?>userstats.php/[你的矿工比特币地址] 页面查看.<BR>
+例如, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
 <BR><BR>
 <BR>
-<CENTER><H3>Recent Blocks</H3></CENTER>
+<CENTER><H3>最近的 Blocks</H3></CENTER>
 
 <?php
 	# Display partial block list on main page
@@ -40,7 +40,7 @@ For example, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJ
 	$subcall = 1;
 	include("blocks.php");
 ?>
-<SMALL>(This table updates in near-realtime automatically in most browsers.  Share counts are converted to difficulty 1 shares.)</SMALL><BR>
+<SMALL>(此统计表格在大多数浏览器里都是准实时更新的. Share 统计数量都转换为困难度为1的shares.)</SMALL><BR>
 <BR>
 <div id="line"></div>
 <div id="graphdiv3phr" style="width:100%; height:275px;"></div>
@@ -125,15 +125,15 @@ For example, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJ
 
 ?>
 <BR><BR>
-Current network difficulty: <?php echo $netdiff; ?><BR>
-Current maximum PPS at this difficulty: <?php
+比特币网络当前挖矿困难度(difficulty): <?php echo $netdiff; ?><BR>
+当前困难度下的最大每股支付额(PPS): <?php
 $xpps = sprintf("%.12f",currentPPSsatoshi($netdiff)/100000000);
 $pps = substr($xpps,0,10);
 $subpps = substr($xpps,10,4);
 print "$pps<small>$subpps</small>";
 ?> BTC<BR>
-Average time to find a block at <?php echo $phash; ?> at this difficulty: <?php echo prettyDuration($netdiff/($sharesperunit*20)); ?><BR>
-Average pool blocks per day at <?php echo $phash; ?> at this difficulty: <?php echo printf("%.2f",86400/($netdiff/($sharesperunit*20))); ?><BR>
+当前困难度下, 以<?php echo $phash; ?>的算力找到一个Block需要的平均时间: <?php echo prettyDuration($netdiff/($sharesperunit*20)); ?><BR>
+当前困难度下, 以<?php echo $phash; ?>的算力池子每天平均找到Block的数量: <?php echo printf("%.2f",86400/($netdiff/($sharesperunit*20))); ?><BR>
 
 
 <?php

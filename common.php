@@ -47,7 +47,7 @@ function print_stats_top() {
 print("<HTML>
 <HEAD>
 <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />
-<TITLE>".$localtitleprepend.$GLOBALS["poolname"]." Pool Statistics".$localtitleappend."</TITLE>
+<TITLE>".$localtitleprepend.$GLOBALS["poolname"]." 矿池状态统计".$localtitleappend."</TITLE>
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">
 <!--[if lt IE 9]><script src=\"".$GLOBALS["urlprefix"]."IE9.js\"></script><![endif]-->
 <script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."dygraph-combined.js\"></script>
@@ -61,18 +61,18 @@ print("<HTML>
 <BODY BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\" LINK=\"#0000FF\" VLINK=\"#0000FF\" ALINK=\"#D3643B\" onLoad=\"initShares();\" ".$localbodytags.">
 <div id=\"wrapper\">
 <div id=\"Eligius-Title\">
-	<H2><A HREF=\"".$GLOBALS["urlprefix"]."\">".$GLOBALS["poolname"]." Pool Statistics</A></H2><!--[if IE]><BR><![endif]-->
-	<h4>Donations to help stats development:<BR><B>12Xx9</B>WhredZ29o7LUGEdj4J5f4tXwLD9QQ</h4>
+	<H2><A HREF=\"".$GLOBALS["urlprefix"]."\">".$GLOBALS["poolname"]." 矿池状态统计</A></H2><!--[if IE]><BR><![endif]-->
+	<h4>请用比特币向此地址捐助矿池统计状态的开发工作:<BR><B>12Xx9</B>WhredZ29o7LUGEdj4J5f4tXwLD9QQ</h4>
 </div>
 <div id=\"luck\">
 <TABLE class=\"lucktable\" width=\"100%\">
 <TR>
-<TD width=\"30%\" style=\"text-align: left\">Hashrate:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px; white-space: nowrap;\" id=\"livehashrate\">$phash</TD>
-<TD width=\"25%\" style=\"text-align: left\">Round Time:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"roundtime\">$roundduration</TD>
+<TD width=\"30%\" style=\"text-align: left\">算力:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px; white-space: nowrap;\" id=\"livehashrate\">$phash</TD>
+<TD width=\"25%\" style=\"text-align: left\">持续时间:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"roundtime\">$roundduration</TD>
 </TR>
 <TR>
-<TD width=\"30%\" style=\"text-align: left\">Round Shares:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px;\" id=\"sharecounter\">$roundshares</TD>
-<TD width=\"25%\" style=\"text-align: left\">Round Luck:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"liveluck\">$liveluck%</TD>
+<TD width=\"30%\" style=\"text-align: left\">Shares:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px;\" id=\"sharecounter\">$roundshares</TD>
+<TD width=\"25%\" style=\"text-align: left\">运气:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"liveluck\">$liveluck%</TD>
 </TR>
 </TABLE>
 </div>
@@ -83,16 +83,16 @@ print("<HTML>
 <div id=\"line\"></div>
 <center>
 <ul id=\"menu\">
-    <li><a href=\"".$GLOBALS["urlprefix"]."\">Home</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">My Stats</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."\">首页</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">我的矿工状态</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."blocks.php\">Blocks</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">Contributors</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">贡献者</a></li>
 </ul>
 </center>
 <br>
 <br>
 <br>
-<!--[if IE]><H4>This page works best in <A HREF=\"http://www.google.com/chrome\">Google Chrome</A>.  You will not have an optimal experience using Internet Explorer.</H4><![endif]-->
+<!--[if IE]><H4>当前页面在 <A HREF=\"http://www.google.com/chrome\">Google Chrome</A> 表现最好, IE浏览器不能完整的显示页面.  使用IE浏览器, 你将不会得到最好的体验.</H4><![endif]-->
 ");
 
 if (apc_fetch('cppsrb_ok') == -1) {

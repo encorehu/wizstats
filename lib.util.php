@@ -46,8 +46,8 @@ function satoshiToTBC($satoshi) {
  * @return string TBC or BTC, according to settings.
  */
 function getPrefferedMonetaryUnit() {
-	if ( 
-		(isset($_COOKIE['a2_tbc']) && $_COOKIE['a2_tbc']) 
+	if (
+		(isset($_COOKIE['a2_tbc']) && $_COOKIE['a2_tbc'])
 		|| (isset($_GET["tonal"]) && $_GET["tonal"])
 	) {
 		return 'TBC';
@@ -116,8 +116,8 @@ function getBE() {
  * @return string a human-readable version of the same duration
  */
 function prettyDuration($duration, $align = false, $precision = 4) {
-	if($duration < 60) return "a few seconds";
-	else if($duration < 300) return "a few minutes";
+	if($duration < 60) return "几秒前";
+	else if($duration < 300) return "几分钟前";
 
 	$units = array("month" => 30.5 * 86400, "week" => 7*86400, "day" => 86400, "hour" => 3600, "minute" => 60);
 
@@ -149,8 +149,8 @@ function prettyDuration($duration, $align = false, $precision = 4) {
 }
 
 function prettyDurationshort($duration, $align = false, $precision = 4) {
-	if($duration < 60) return "a few seconds";
-	else if($duration < 300) return "a few minutes";
+	if($duration < 60) return "几秒前";
+	else if($duration < 300) return "几分钟前";
 
 	$units = array("mon" => 30.5 * 86400, "wk" => 7*86400, "day" => 86400, "hr" => 3600, "min" => 60);
 
@@ -339,7 +339,7 @@ function prettyInvalidReason($reason) {
  */
 function prettyBlockStatus($s, $when = null) {
 	if($s === null) {
-		return '<td class="unconfirmed conf9" title="There is no bitcoin node available at the moment to check the status of this block."><span>???</span></td>';	
+		return '<td class="unconfirmed conf9" title="There is no bitcoin node available at the moment to check the status of this block."><span>???</span></td>';
 	} else if($when !== null && (time() - $when) < FRESH_BLOCK_THRESHOLD) {
 		return '<td class="unconfirmed conf9" title="It is too soon to try to determine the status of this block."><span>???</span></td>';
 	} else if($s === true) {

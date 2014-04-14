@@ -41,7 +41,7 @@ if ($cmd == "logout") {
 
 print_stats_top();
 
-print "<H2>我的 $poolname 控制面板</H2><HR><BR>";
+print "<H2>$poolname矿池控制面板</H2><HR><BR>";
 
 if ($cmd == "logout") {
 	print "注销成功.<BR>";

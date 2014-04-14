@@ -1,4 +1,5 @@
 config.php
+announce.txt
 old/
 *.old
 *.prj

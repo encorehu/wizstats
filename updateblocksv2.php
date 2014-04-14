@@ -64,6 +64,12 @@ for($ri = 0; $ri < $numrows; $ri++) {
 			print "GOOD   $blockhash ($confs confs) HEIGHT: $height\n";
 		}
 
+		if($row["roundstart"]==""){
+			$blocktime = $jresult["time"];
+		} else {
+			$blocktime = $row["roundstart"];
+		}
+
 
 	}
 
@@ -71,7 +77,7 @@ for($ri = 0; $ri < $numrows; $ri++) {
 		$confs = 120;
 	}
 
-	if($row["roundstart"]==""){echo 'roundstart is empty';}else{echo 'roundstart is ',$row["roundstart"];}
+
 
 	print "XXX: ".$row["roundstart"]."-".$row["acceptedshares"]."\n";
 
@@ -95,10 +101,12 @@ for($ri = 0; $ri < $numrows; $ri++) {
 			$orig_id2 = 0; ###? ???????
 			$roundstart = $row["time"];
 			$lastrightrejects = 0;
+			print "roundstart1: $roundstart\n";
 		} else {
 			$row2 = pg_fetch_array($result2, 0);
 			$orig_id2 = $row2["orig_id"];
 			$roundstart = $row2["time"];
+			print "roundstart2: $roundstart\n";
 			if (isset($row2["rightrejects"])) {
 				$lastrightrejects = $row2["rightrejects"];
 			} else {
@@ -124,6 +132,7 @@ for($ri = 0; $ri < $numrows; $ri++) {
 				}
 			}
 		}
+
 		# count block shares exactly using vardiff for POT targetmask...
 		$sql = "select sum(pow(2,targetmask-32)) as blockshares from shares where server=$serverid and our_result=true and id > $orig_id2 and id <= $orig_id;";
 		print "SQL C: $sql\n";

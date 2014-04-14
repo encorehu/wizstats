@@ -59,11 +59,11 @@ $txcount = count($block["tx"]);
 
 print "<TABLE BORDER=1>";
 
-print "<TR><TD><B>Block hash:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
-print "<TR><TD><B>Height:</B></TD><TD>{$block["height"]}</TD></TR>";
-print "<TR><TD><B>Previous Block hash:</B></TD><TD>{$block["previousblockhash"]}</TD></TR>";
+print "<TR><TD><B>区块哈希:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
+print "<TR><TD><B>区块高度:</B></TD><TD>{$block["height"]}</TD></TR>";
+print "<TR><TD><B>上一区块哈希:</B></TD><TD>{$block["previousblockhash"]}</TD></TR>";
 print "<TR><TD><B>Merkle root:</B></TD><TD>{$block["merkleroot"]}</TD></TR>";
-print "<TR><TD><B>Difficulty:</B></TD><TD>{$block["difficulty"]}</TD></TR>";
+print "<TR><TD><B>区块困难度:</B></TD><TD>{$block["difficulty"]}</TD></TR>";
 
 $a = hexdec($blockhash);
 $b = hexdec("00000000FFFF0000000000000000000000000000000000000000000000000000");
@@ -72,18 +72,18 @@ $adiffp = ($adiff/$block["difficulty"])*100;
 if ($adiffp > 9000) { $adiffp = ">9000"; }
 else { $adiffp = sprintf("%.2f",$adiffp); }
 
-print "<TR><TD><B>Difficulty Achieved:</B></TD><TD>{$adiff} ($adiffp%)</TD></TR>";
+print "<TR><TD><B>实际完成困难度:</B></TD><TD>{$adiff} ($adiffp%)</TD></TR>";
 
-print "<TR><TD><B>Bits:</B></TD><TD>{$block["bits"]}</TD></TR>";
+print "<TR><TD><B>二进制位:</B></TD><TD>{$block["bits"]}</TD></TR>";
 $nonce = sprintf("%8x",$block["nonce"]);
-print "<TR><TD><B>Nonce:</B></TD><TD>$nonce</TD></TR>";
-print "<TR><TD><B>Version:</B></TD><TD>{$block["version"]}</TD></TR>";
+print "<TR><TD><B>随机数:</B></TD><TD>$nonce</TD></TR>";
+print "<TR><TD><B>版本:</B></TD><TD>{$block["version"]}</TD></TR>";
 $t = date("Y-m-d H:i:s",$block["time"]);
-print "<TR><TD><B>Time:</B></TD><TD>$t</TD></TR>";
+print "<TR><TD><B>时间:</B></TD><TD>$t</TD></TR>";
 
-print "<TR><TD><B>Transactions:</B></TD><TD>$txcount</TD></TR>";
-print "<TR><TD><B>Size:</B></TD><TD>{$block["size"]} bytes</TD></TR>";
-print "<TR><TD><B>Coinbase transaction id:</B></TD><TD>{$block["tx"][0]}<BR><A HREF=\"http://blockchain.info/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
+print "<TR><TD><B>内含交易数:</B></TD><TD>$txcount</TD></TR>";
+print "<TR><TD><B>区块字节大小:</B></TD><TD>{$block["size"]} bytes</TD></TR>";
+print "<TR><TD><B>Coinbase 交易ID:</B></TD><TD>{$block["tx"][0]}<BR><A HREF=\"http://blockchain.info/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/tx/{$block["tx"][0]}\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
 
 
 $cbtxid = $block["tx"][0];

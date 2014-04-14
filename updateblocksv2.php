@@ -71,6 +71,8 @@ for($ri = 0; $ri < $numrows; $ri++) {
 		$confs = 120;
 	}
 
+	if($row["roundstart"]==""){echo 'roundstart is empty'}
+
 	print "XXX: ".$row["roundstart"]."-".$row["acceptedshares"]."\n";
 
 	$orig_id = $row["orig_id"];

@@ -47,6 +47,7 @@ if (isset($blocklimit)) {
 	$blim = "limit $blocklimit";
 } else {
 	###$blim = "limit 10";
+	$blim = "";
 	print "<SMALL>Click on a header item to sort the list</SMALL><BR><BR>";
 }
 

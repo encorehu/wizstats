@@ -63,7 +63,7 @@ if ($cacheddata != "") {
 
 	$pdata = "<TABLE BORDER=1 class=\"contributors\">";
 
-	$pdata .= "<TR class=\"contribhead\"><TD>Rank</TD><TD>Address</TD><TD>3-hr Avg Hashrate</TD><TD>3-hr Shares</TD><TD>Percentage of Pool</TD></TR>";
+	$pdata .= "<TR class=\"contribhead\"><TD>等级</TD><TD>比特币地址</TD><TD>3 小时平均算力</TD><TD>3 小时贡献Shares</TD><TD>矿池占比</TD></TR>";
 
 	$oe = 0;
 

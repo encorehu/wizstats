@@ -45,7 +45,7 @@ if (($getblock["result"]["hash"] != $blockhash) || (strlen($blockhash) != 64)) {
 	if ((isset($getblock["result"])) && ($getblock["result"] == "NonEligius")) {
 		print "Block is not from $poolname - $blockhash<BR><a HREF=\"http://blockchain.info/block/$blockhash\">View $blockhash on Blockchain.info</A>\n";
 	} else {
-		print "Block not found - $blockhash\n";
+		print "没找到块, 其哈希值为: - $blockhash\n";
 	}
 	print_stats_bottom();
 	exit;
@@ -53,13 +53,13 @@ if (($getblock["result"]["hash"] != $blockhash) || (strlen($blockhash) != 64)) {
 
 $block = $getblock["result"];
 
-print "<H1>Block #{$block["height"]}</H2>";
+print "<H1>区块 #{$block["height"]}</H2>";
 
 $txcount = count($block["tx"]);
 
 print "<TABLE BORDER=1>";
 
-print "<TR><TD><B>区块哈希:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">View on Blockchain.info</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">View on Blockexplorer.com</A></TD></TR>";
+print "<TR><TD><B>区块哈希:</B></TD><TD>$blockhash<BR><A HREF=\"http://blockchain.info/block/$blockhash\" TARGET=\"_blank\">去 Blockchain.info 查看</A> - <A HREF=\"http://blockexplorer.com/block/$blockhash\" TARGET=\"_blank\">去 Blockexplorer.com 查看</A></TD></TR>";
 print "<TR><TD><B>区块高度:</B></TD><TD>{$block["height"]}</TD></TR>";
 print "<TR><TD><B>上一区块哈希:</B></TD><TD>{$block["previousblockhash"]}</TD></TR>";
 print "<TR><TD><B>Merkle root:</B></TD><TD>{$block["merkleroot"]}</TD></TR>";

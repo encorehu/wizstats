@@ -38,10 +38,10 @@ for($ri = 0; $ri < $numrows; $ri++) {
 	$sol = $row["solution"];
 
 	$sol = substr($sol,2,160);
-        $sol = bigtolittle($sol);
-        $blockhash = pack("H*", $sol);
-        $blockhash = hash("sha256",hash("sha256",$blockhash,true));
-        $blockhash = revhex($blockhash);
+	$sol = bigtolittle($sol);
+	$blockhash = pack("H*", $sol);
+	$blockhash = hash("sha256",hash("sha256",$blockhash,true));
+	$blockhash = revhex($blockhash);
 
 	$getblockjson = "{\"method\":\"getblock\", \"id\":\"1\", \"params\":[\"$blockhash\"]}";
 	$getblock = my_curl_request($bitcoinrpcurl, $getblockjson);

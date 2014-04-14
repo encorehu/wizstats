@@ -199,7 +199,7 @@
 						$result = pg_exec($link, $sql2); $row = pg_fetch_array($result, 0);
 						$sql2res = $row["sql2res"];
 
-						$sql = "select (sum(accepted_shares)*pow(2,40))/1350 as avghash,sum(accepted_shares) as share_total from $psqlschema.stats_shareagg where server=$serverid and time > to_timestamp($sql2res)-'1350 seconds'::interval";
+						$sql = "select (sum(accepted_shares)*pow(2,40))/1350 as avghash,sum(accepted_shares) as share_total from $psqlschema.stats_shareagg where server=$serverid and time > to_timestamp($sql2res) at time zone 'UTC' -'1350 seconds'::interval";
 						$result = pg_exec($link, $sql); $row = pg_fetch_array($result, 0);
 						$hashrate256 = $row["avghash"];
 

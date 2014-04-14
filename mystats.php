@@ -102,9 +102,9 @@ print "Welcome, $u! <BR>";
 if ($cmd) {
 
 	if ($cmd == "menu") {
-		print "<A HREF=\"userstats.php/$u\">My User Stats Page</A><BR>\n";
-		print "<A HREF=\"?cmd=options\">Configurable Options</A><BR>\n";
-		print "<A HREF=\"?cmd=switchaddr\">Switch Mining Address</A><BR>\n";
+		print "<A HREF=\"userstats.php/$u\">我的矿工状态统计页面</A><BR>\n";
+		print "<A HREF=\"?cmd=options\">选项配置</A><BR>\n";
+		print "<A HREF=\"?cmd=switchaddr\">更换挖矿比特币地址</A><BR>\n";
 	}
 
 	if ($cmd == "submitsig") {
@@ -330,7 +330,7 @@ if ($cmd) {
 		<input type="hidden" name="u" value="<?php echo $u; ?>">
 		</FORM>
 
-		<BR><H3><U><FONT COLOR="RED">WARNING - READ BEFORE SUBMITTING</FONT></U></H3>
+		<BR><H3><U><FONT COLOR="RED">警告 - 提交表单前必须阅读</FONT></U></H3>
 		<B>Quick terms: By submitting a valid signature for your mining address, you are agreeing to these terms.<BR>Submitting the changes with a valid signature will immediately save the changes to the server.<BR>
 		To undo any changes, you will have to submit new changes with a new signature.<BR>
 		The pool is *not* responsible for any properly signed settings which are incorrect/undesired.<BR></B>
@@ -352,8 +352,8 @@ if ($cmd) {
 
 ?>
 
-<A HREF="mystats.php?cmd=menu">My Stats Menu</A><BR>
-<A HREF="mystats.php?cmd=logout">Log Out</A><BR>
+<A HREF="mystats.php?cmd=menu">我的矿工状态菜单</A><BR>
+<A HREF="mystats.php?cmd=logout">注销</A><BR>
 
 <?php print_stats_bottom(); ?>
 

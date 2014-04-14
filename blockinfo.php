@@ -113,7 +113,7 @@ print "<TABLE BORDER=1>";
 
 $failsafe = 0;
 $total = 0;
-$oe == 0;
+$oe = 0;
 for($i=0;$i<$cbouts;$i++) {
 
 	$out = $cbtx["vout"][$i];

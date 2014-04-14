@@ -526,7 +526,7 @@ if ($everpaid > 0) {
 		set_stats_cache($link, 12, $query_hash, $pdata, 600); # just cache for 10 minutes so that updates dont cause caching of invalid data
 	}
 } else {
-	print "<BR>No data available.<BR>";
+	print "<BR>没有可用数据.<BR>";
 }
 
 print "All time total payout: ".prettySatoshis($everpaid);
@@ -640,7 +640,7 @@ if ($u16avghash > 0) {
 	}
 	$satoshiperday = round((($u16avghash*86400) / 4294967296)*(2500000000/$netdiff),0);
 	$netdiff = round($netdiff,2);
-	print "<BR><B>Estimated Earnings</B><BR>";
+	print "<BR><B>预计收入</B><BR>";
 	print "<span style=\"font-size: 0.8em\">";
 	print "Your approximate maximum potential earnings at the current network difficulty of ".number_format($netdiff,2)." and maintaining your 3-hour average hash rate of ".prettyHashrate($u16avghash)." is ".prettySatoshis($satoshiperday)." per day.\n";
 	print "</span>";

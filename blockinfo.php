@@ -103,11 +103,11 @@ $cbtx = $gettxn["result"];
 $cbtext = $cbtx["vin"][0]["coinbase"];
 
 $cbouts = count($cbtx["vout"]);
-print "<TR><TD><B>Addresses paid in coinbase tx:</B></TD><TD>$cbouts</TD></TR>";
+print "<TR><TD><B>Coinbase 交易中支付的地址数量:</B></TD><TD>$cbouts</TD></TR>";
 
 print "</TABLE>";
 
-print "<h2>Payouts in Coinbase Transaction</h2>";
+print "<h2>Coinbase 交易中的支付详单</h2>";
 
 print "<TABLE BORDER=1>";
 

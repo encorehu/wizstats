@@ -22,13 +22,21 @@ require_once 'hashrate.php';
 
 if (!isset($_SERVER['PATH_INFO'])) {
 	print_stats_top();
-	print "<BR><FONT COLOR=\"RED\"><B>Error:</B> No username specified in URL path  Please try again.</FONT><BR>";
+	print "<BR><FONT COLOR=\"RED\"><B>错误:</B> URL中未指定用户名(你的比特币地址), 请设定比特币地址后再试.</FONT><BR>";
 	print_stats_bottom();
 	exit;
 }
 
 
 $givenuser = substr($_SERVER['PATH_INFO'],1,strlen($_SERVER['PATH_INFO'])-1);
+
+if ($givenuser == "") {
+	print_stats_top();
+	print "<BR><FONT COLOR=\"RED\"><B>错误:</B> URL中未指定用户名(你的比特币地址), 请设定比特币地址后再试.</FONT><BR>";
+	print_stats_bottom();
+	exit;
+}
+
 
 if (array_key_exists($givenuser,$specialaddrs)) {
 	print_stats_top();
@@ -46,7 +54,7 @@ if (pg_connection_status($link) != PGSQL_CONNECTION_OK) {
 	$link = pg_pconnect("dbname=$psqldb user=$psqluser password='$psqlpass' host=$psqlhost");
 	if (pg_connection_status($link) != PGSQL_CONNECTION_OK) {
 		print_stats_top();
-		print "<BR><FONT COLOR=\"RED\"><B>Error:</B> Unable to establish a connection to the stats database.  Please try again later. If this issue persists, please report it to the pool operator.</FONT><BR>";
+		print "<BR><FONT COLOR=\"RED\"><B>错误:</B> Unable to establish a connection to the stats database.  Please try again later. If this issue persists, please report it to the pool operator.</FONT><BR>";
 		print_stats_bottom();
 		exit;
 	}
@@ -56,7 +64,7 @@ $user_id = get_user_id_from_address($link, $givenuser);
 
 if (!$user_id) {
 	print_stats_top();
-	print "<BR><FONT COLOR=\"RED\"><B>Error:</B> Username <I>$givenuser</I> not found in database.  Please try again later., as the stats server is probably just overloaded. If this issue persists for several hours, please report it to the pool operator.</FONT><BR>";
+	print "<BR><FONT COLOR=\"RED\"><B>错误:</B> 用户名(您的比特币地址) <I>$givenuser</I> 没有在数据库中找到. 请稍候再试. 可能的原因是1.你的用户名是错误的; 2.服务器超负荷运转导致暂时停止服务, 如果这个问题持续了几个小时, 请和矿池管理员联系.</FONT><BR>";
 	print_stats_bottom();
 	exit;
 }

@@ -84,11 +84,9 @@ print("<HTML>
 <center>
 <ul id=\"menu\">
     <li><a href=\"".$GLOBALS["urlprefix"]."\">Home</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">My ".$GLOBALS["poolname"]."</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">My Stats</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."blocks.php\">Blocks</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">Contributors</a></li>
-    <li><a target=\"_blank\" href=\"https://github.com/wizkid057/wizstats\">GitHub</a></li>
-    <li><a href=\"/\">".$GLOBALS["poolname"]." Homepage</a></li>
 </ul>
 </center>
 <br>
@@ -109,6 +107,7 @@ function print_stats_bottom() {
 	$localafterbodyextras = "";
 	if (isset($GLOBALS["afterbodyextras"])) { $localafterbodyextras = $GLOBALS["afterbodyextras"]; }
 
+	print("<BR><div id=\"line\"></div>");
 	print('&copy;&nbsp;<script>document.write(new Date().getFullYear())</script>&nbsp;'.$GLOBALS["poolname"]);
 
 	print("</BODY>".$localafterbodyextras."</HTML>");

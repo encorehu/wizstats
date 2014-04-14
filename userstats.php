@@ -625,7 +625,7 @@ if ($savedbal) {
 		} else {
 			$delay = "after a $bc block delay";
 		}
-		print $aheadtext.", putting this user's payout $delay.<BR><SMALL style=\"font-size: 70%\"><I>Note: This is constantly changing. See <A HREF=\"http://eligius.st/~wizkid057/newstats/payoutqueue.php#$givenuser\">the payout queue</A>.</I></SMALL>";
+		print $aheadtext.", putting this user's payout $delay.<BR><SMALL style=\"font-size: 70%\"><I>Note: This is constantly changing. See <A HREF=\"".$GLOBALS["urlprefix"]."payoutqueue.php#$givenuser\">the payout queue</A>.</I></SMALL>";
 	}
 	print "</span>";
 	print "<BR><BR><HR>";

@@ -40,7 +40,7 @@ print "<H2>Payout Queue</H2><BR>";
 		while($value['balance'] > 0) {
 			if ($total+$value['balance'] > 2500000000) {
 				$maxbal = 2500000000 - $total;
-				$qt .= "<TR $oe> <TD>$paynum</TD><TD><A HREF=\"/~wizkid057/newstats/userstats.php/$key\" id=\"$key\">$key</A></TD> <TD>".prettyDuration(time()-$value['oldest'])."</TD> <TD>".prettySatoshis($maxbal)."</TD> </TR>";
+				$qt .= "<TR $oe> <TD>$paynum</TD><TD><A HREF=\"".$GLOBALS["urlprefix"]."userstats.php/$key\" id=\"$key\">$key</A></TD> <TD>".prettyDuration(time()-$value['oldest'])."</TD> <TD>".prettySatoshis($maxbal)."</TD> </TR>";
 				if ($oddeven) { $oe = " class=\"oddblockconfirmed\""; $oddeven = 0; } else { $oe = " class=\"blockconfirmed\""; $oddeven = 1; }
 				$qt .= "<TR $oe><TD></TD><TD><B>--- BLOCK BOUNDARY---</B></TD> <TD></TD> <TD></TD></TR>";
 				if ($oddeven) { $oe = " class=\"oddblockconfirmed\""; $oddeven = 0; } else { $oe = " class=\"blockconfirmed\""; $oddeven = 1; }
@@ -49,7 +49,7 @@ print "<H2>Payout Queue</H2><BR>";
 				$total = 0; $blocks++;
 				$paynum++;
 			} else {
-				$qt .= "<TR $oe><TD>$paynum</TD><TD><A HREF=\"/~wizkid057/newstats/userstats.php/$key\" id =\"$key\">$key</A></TD> <TD>".prettyDuration(time()-$value['oldest'])."</TD><TD>".prettySatoshis($value['balance'])."</TD></TR>";
+				$qt .= "<TR $oe><TD>$paynum</TD><TD><A HREF=\"".$GLOBALS["urlprefix"]."userstats.php/$key\" id =\"$key\">$key</A></TD> <TD>".prettyDuration(time()-$value['oldest'])."</TD><TD>".prettySatoshis($value['balance'])."</TD></TR>";
 				if ($oddeven) { $oe = " class=\"oddblockconfirmed\""; $oddeven = 0; } else { $oe = " class=\"blockconfirmed\""; $oddeven = 1; }
 				$total+=$value['balance'];
 				$alltotal+=$value['balance'];

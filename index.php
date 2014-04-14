@@ -28,8 +28,8 @@ if (strlen($announce) > 0) {
 ?>
 
 
-For individual stats, use http://eligius.st/~wizkid057/newstats/userstats.php/[your miner address] for individual stats.<BR>
-For example, <A HREF="http://eligius.st/~wizkid057/newstats/userstats.php/1Jq8g5RNuPSS28hoiuh1PbgakVxNzqB4it">http://eligius.st/~wizkid057/newstats/userstats.php/1Jq8g5RNuPSS28hoiuh1PbgakVxNzqB4it</A>
+For individual stats, use <?php echo $urlprefix;?></>newstats/userstats.php/[your miner address] for individual stats.<BR>
+For example, <A HREF="<?php echo $urlprefix;?>userstats.php/1Jq8g5RNuPSS28hoiuh1PbgakVxNzqB4it"><?php echo $urlprefix;?>userstats.php/1Jq8g5RNuPSS28hoiuh1PbgakVxNzqB4it</A>
 <BR><BR>
 <BR>
 <CENTER><H3>Recent Blocks</H3></CENTER>

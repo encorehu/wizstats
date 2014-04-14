@@ -253,6 +253,7 @@ if ($cmd) {
 					'NMC_Address' => '',
 				);
 			}
+			$donatesum = 0;
 		} else {
 			$msg = $_GET["msg"];
 			$sig = $_GET["sig"];
@@ -303,44 +304,47 @@ if ($cmd) {
 		-->
 		</SCRIPT>
 
-		<BR><B>You must use a bitcoin client which supports standard signatures for your mining address to sign options!</b><BR>
-		Community contributed instructions for using Bitcoin-qt are here: <A HREF="http://eligius.st/~capa66/utl/my_eligius/index.html">http://eligius.st/~capa66/utl/my_eligius/index.html</A><BR>
-		<BR><H3><U>Options Form</U></H3><SMALL>All fields are optional. Leaving a field blank will result in the pool default for the setting being applied.</SMALL><BR><BR>
+		<BR><B>你必须使用一个支持给挖矿地址使用标准签名的比特币客户端来签名你的各个选项(如果你不能确定, 仅仅只想看看统计数据, 建议不要修改这里的配置)</b><BR>
+		比特币客户端 Bitcoin-qt 使用指南这里有一个: <A HREF="http://eligius.st/~capa66/utl/my_eligius/index.html">http://eligius.st/~capa66/utl/my_eligius/index.html</A><BR>
+		<BR><H3><U>选项表单</U></H3><SMALL>所有的填写项目都是可选的. 如果不填写, 将会使用矿池默认设置.</SMALL><BR><BR>
 		<FORM name="optionsform" onsubmit="return false;">
 		<TABLE BORDER=0>
-		<TR><TD><B>Nickname</B>:</TD><TD><INPUT TYPE="TEXT" name="Nickname" size=32 maxlength=32 value="<?php echo htmlspecialchars($msgvars_array["Nickname"]); ?>" onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> (Default: <?php echo $u; ?>)</TD></TR>
-		<TR><TD><B>Minimum Payout</B>:</TD><TD><INPUT TYPE="TEXT" name="Minimum_Payout_BTC" size=12 value="<?php echo  htmlspecialchars($msgvars_array["Minimum_Payout_BTC"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> BTC (Default: 0.04194304, Minimum: 0.01048576 [10 TBC])</TD></TR>
-		<TR><TD><B>Optional Donation %s</B>:</TD><TD></TD></TR>
-		<TR><TD style="text-align:right;"><SMALL>Pool Management:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Pool" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Pool"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (Default: 0.00%)</TD></TR>
-		<TR><TD style="text-align:right;"><SMALL>Stats Development:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Stats" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Stats"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (Default: 0.00%)</TD></TR>
-		<TR><TD style="text-align:right;"><SMALL>Pool Hosting:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Hosting" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Hosting"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (Default: 0.00%)</TD></TR>
-		<TR><TD style="text-align:right;"><SMALL><B>Total</B></SMALL></TD><TD id="totaldonate"><?php echo $donatesum; ?></TD></TR>
-		<TR><TD><B>NMC Merged Mining Addr</B>:</TD><TD><INPUT TYPE="TEXT" name="NMC_Address" size=35 maxlength=35 value="<?php echo htmlspecialchars($msgvars_array["NMC_Address"]); ?>" onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> (Default: Blank)</TD></TR>
+		<TR><TD><B>昵称</B>:</TD><TD><INPUT TYPE="TEXT" name="Nickname" size=32 maxlength=32 value="<?php echo htmlspecialchars($msgvars_array["Nickname"]); ?>" onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> (默认值: <?php echo $u; ?>)</TD></TR>
+		<TR><TD><B>最小支付金额</B>:</TD><TD><INPUT TYPE="TEXT" name="Minimum_Payout_BTC" size=12 value="<?php echo  htmlspecialchars($msgvars_array["Minimum_Payout_BTC"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> BTC (默认值: 0.04194304, 最小值: 0.01048576 [10 TBC])</TD></TR>
+		<TR><TD><B>可选赞助 %s</B>:</TD><TD></TD></TR>
+		<TR><TD style="text-align:right;"><SMALL>赞助小费给矿池管理维护人员:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Pool" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Pool"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (默认值: 0.00%)</TD></TR>
+		<TR><TD style="text-align:right;"><SMALL>赞助小费给矿池统计状态开发人员:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Stats" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Stats"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (默认值: 0.00%)</TD></TR>
+		<TR><TD style="text-align:right;"><SMALL>赞助小费给矿池服务器费用:</SMALL></TD><TD><INPUT TYPE="TEXT" name="Donate_Hosting" size=6 value="<?php echo htmlspecialchars($msgvars_array["Donate_Hosting"]); ?>" maxlength=32 onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()">% (默认值: 0.00%)</TD></TR>
+		<TR><TD style="text-align:right;"><SMALL><B>总计</B></SMALL></TD><TD id="totaldonate"><?php echo $donatesum; ?></TD></TR>
+		<TR><TD><B>NMC 合并挖矿地址</B>:</TD><TD><INPUT TYPE="TEXT" name="NMC_Address" size=35 maxlength=35 value="<?php echo htmlspecialchars($msgvars_array["NMC_Address"]); ?>" onChange="updateOptionsMessage()" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange()"> (默认值: 空白)</TD></TR>
 		</TABLE></FORM>
 
 		<HR><BR>
 
 		<FORM METHOD="GET" name="sigform">
-		<B>Message to Sign with <?php echo $u; ?>:<BR></B>
+		<B> <?php echo $u; ?> 需要签名的消息:<BR></B>
 		<div id="msgdiv"><?php echo htmlspecialchars($msg); ?></div><BR>
 		<input type="text" name="msg" size="128" value="<?php echo htmlspecialchars($msg); ?>"><BR>
-		<B>Signature</B>:<BR><INPUT TYPE="text" size="128" name="sig" value="<?php echo htmlspecialchars($sig); ?>"><BR>
+		<B>签名</B>:<BR><INPUT TYPE="text" size="128" name="sig" value="<?php echo htmlspecialchars($sig); ?>"><BR>
 		<input type="submit" value="Submit Changes!">
 		<input type="hidden" name="cmd" value="submitsig">
 		<input type="hidden" name="u" value="<?php echo $u; ?>">
 		</FORM>
 
 		<BR><H3><U><FONT COLOR="RED">警告 - 提交表单前必须阅读</FONT></U></H3>
-		<B>Quick terms: By submitting a valid signature for your mining address, you are agreeing to these terms.<BR>Submitting the changes with a valid signature will immediately save the changes to the server.<BR>
-		To undo any changes, you will have to submit new changes with a new signature.<BR>
-		The pool is *not* responsible for any properly signed settings which are incorrect/undesired.<BR></B>
-		<BR>Some changes can take up to an hour to take effect.  All changes take effect at that time.  No changes are retroactive and all only apply from the time they are updated.  The pool reserves the right to remove any nickname it feels is inappropriate, at it's sole discretion.  This page is part of the public pool stats and anyone is able to view the settings here, along with the most recent signed message and signature for open verification.  However, settings can not be changed without a new valid signature.<BR><BR>
-		Option specific notes:<BR>
-		* Nickname - Please keep it clean.  No URLs, ads, etc.  This will be displayed on your userstats page under your address.<BR><BR>
-		* Minimum Work Difficulty - This option will have the pool use a best-effort attempt at serving work at or above this difficulty to your workers.  Due to the way Stratum handles authentication and work processing, you may still receive some difficulty 1 work at first because work is given before the pool knows who you are.  The pool reserves the right to reset this value to the pool default for any miner at any time at it's sole discretion.<BR><BR>
-		* Minimum Payout - This option does not take effect instantly.  You may still be subject to a previously set (or default) value for up to 24 hours after submitting changes.<BR><BR>
-		* Optional Donation %s - The various donation &quot;buckets&quot; each have their own bitcoin address which will be paid by the pool based on the standard payout queue.<BR><BR>
-		* NMC Merged Mining Addr - Namecoin payouts for your mining will go to this address.
+		<B>快速条款: 通过提交有效签名给你的比特币地址签名, 你已经默认以下条款:
+		<BR>通过有效签名对选项做的修改将会立即保存在矿池服务器上.<BR>
+		如果需要撤销修改, 你需要提交新的修改内容并使用新的签名对新内容进行签名.<BR>
+		矿池将 *不会* 对经过有效签名确认提交的任何错误的/不需要的内容负责.<BR></B>
+		<BR>一些修改将会需要一个小时左右生效.
+		所有的修改将会在最慢生效的内容起作用后生效.
+		No changes are retroactive and all only apply from the time they are updated.  The pool reserves the right to remove any nickname it feels is inappropriate, at it's sole discretion.  This page is part of the public pool stats and anyone is able to view the settings here, along with the most recent signed message and signature for open verification.  However, settings can not be changed without a new valid signature.<BR><BR>
+		其他特定说明:<BR>
+		* 昵称 - 请保持清爽, 不要夹杂 URLs, 广告等推广内容. 这个将会显示在你的状态页面, 在地址的下方.<BR><BR>
+		* 最小工作困难度 - This option will have the pool use a best-effort attempt at serving work at or above this difficulty to your workers.  Due to the way Stratum handles authentication and work processing, you may still receive some difficulty 1 work at first because work is given before the pool knows who you are.  The pool reserves the right to reset this value to the pool default for any miner at any time at it's sole discretion.<BR><BR>
+		* 最小支付金额 - 这个选项并不是及时生效的. 提交修改后24小时内, 你可能仍然在使用修改前的配置内容(或者默认值).<BR><BR>
+		* 可选赞助 %s - The various donation &quot;buckets&quot; each have their own bitcoin address which will be paid by the pool based on the standard payout queue.<BR><BR>
+		* NMC 合并挖矿地址 - 你对 Namecoin 的挖矿所得(Namecoin)将会支付到这个地址.
 		<HR>
 		<?php
 	}

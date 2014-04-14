@@ -41,10 +41,10 @@ if ($cmd == "logout") {
 
 print_stats_top();
 
-print "<H2>我的 $poolname Control Panel</H2><HR><BR>";
+print "<H2>我的 $poolname 控制面板</H2><HR><BR>";
 
 if ($cmd == "logout") {
-	print "Logout successful.<BR>";
+	print "注销成功.<BR>";
 }
 
 ?>
@@ -77,17 +77,17 @@ if ($nouser == 1) {
 	if ($cmd != "switchaddr") {
 	?>
 
-	<H2>No address sent for <I>My Stats</I> page</H2><BR>
+	<H2>没有地址发送到 <I>矿工状态</I> 页面</H2><BR>
 	<?php
 	}
 	?>
 	<?php echo $reason; ?>
-	To use <I>My Stats</I> you must specify your <?php echo $poolname; ?> mining address.<BR>
+	想查看 <I>矿工状态</I> 你必须指定你在 <?php echo $poolname; ?> 矿池的挖矿用的比特币地址.<BR>
 	<BR>
 
-	<FORM METHOD="GET">Mining Address: <INPUT TYPE="text" name="u" size=40 maxlength=512><BR>
-	<input type="checkbox" name="storecookie" CHECKED> Store mining address in browser cookie? (as of now broken unless checked)<BR>
-	<input type="submit" value="Proceed!">
+	<FORM METHOD="GET">挖矿用的比特币地址: <INPUT TYPE="text" name="u" size=40 maxlength=512><BR>
+	<input type="checkbox" name="storecookie" CHECKED> 保存挖矿用的比特币地址在浏览器的Cookie里吗? (保存请打勾)<BR>
+	<input type="submit" value="去查看我的矿工状态!">
 	</FORM>
 
 	<?php

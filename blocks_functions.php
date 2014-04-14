@@ -37,13 +37,13 @@ function block_table_header() {
 	$blocks_header .= "<TH>年龄</TH>";
 	$blocks_header .= "<TH>开始时间</TH>";
 	$blocks_header .= "<TH>持续时间</TH>";
-	$blocks_header .= "<TH>Accepted Shares</TH>";
+	$blocks_header .= "<TH>已接受的 Shares</TH>";
 	$blocks_header .= "<TH>困难度</TH>";
 	$blocks_header .= "<TH>运气</TH>";
 	$blocks_header .= "<TH>算力</TH>";
 	$blocks_header .= "<TH>确认数</TH>";
 	$blocks_header .= "<TH>贡献者</TH>";
-	$blocks_header .= "<TH>Height</TH>";
+	$blocks_header .= "<TH>Block 高度</TH>";
 	$blocks_header .= "<TH>Block Hash</TH>";
 	$blocks_header .= "</TR>";
 	$blocks_header .= "</thead>";

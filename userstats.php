@@ -366,11 +366,11 @@ if (count($worker_data) > 1) {
 				$wname = htmlspecialchars($wname);
 				$table .= "<TR class=\"userstats$oev\"><TD><b>$wname</b></TD><TD></TD><TD></TD></TR>\n";
 				if (isset($wstat[$wid][0])) {
-					$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>12 Hours</I></TD><TD>".prettyHashrate(($wstat[$wid][0][1]*4294967296*256)/43200)."</TD><TD>{$wstat[$wid][0][1]}</TD></TR>";
+					$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>12 小时</I></TD><TD>".prettyHashrate(($wstat[$wid][0][1]*4294967296*256)/43200)."</TD><TD>{$wstat[$wid][0][1]}</TD></TR>";
 					if ((isset($wstat[$wid][1])) && ($wstat[$wid][1][1])) {
-						$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>3 Hours</I></TD><TD>".prettyHashrate(($wstat[$wid][1][1]*4294967296*256)/10800)."</TD><TD>{$wstat[$wid][1][1]}</TD></TR>";
+						$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>3 小时</I></TD><TD>".prettyHashrate(($wstat[$wid][1][1]*4294967296*256)/10800)."</TD><TD>{$wstat[$wid][1][1]}</TD></TR>";
 						if ((isset($wstat[$wid][2])) && ($wstat[$wid][2][1])) {
-							$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>22.5 Minutes</I></TD><TD>".prettyHashrate(($wstat[$wid][2][1]*4294967296*256)/1350)."</TD><TD>{$wstat[$wid][2][1]}</TD></TR>";
+							$table .= "<TR class=\"userstats$oev\" style=\"text-align: right;\"><TD><I>22.5 分钟</I></TD><TD>".prettyHashrate(($wstat[$wid][2][1]*4294967296*256)/1350)."</TD><TD>{$wstat[$wid][2][1]}</TD></TR>";
 						}
 					}
 				}

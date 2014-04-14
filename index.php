@@ -69,7 +69,7 @@ if (strlen($announce) > 0) {
    	{ strokeWidth: 2.25,
 	'hashrate': {fillGraph: true },
 	labelsDivStyles: { border: '1px solid black' },
-	title: '<?php echo $poolname; ?> 矿池算力统计',
+	title: '矿池算力统计',
 	xlabel: 'Date',
 	ylabel: 'Hashes/sec',
 	animatedZooms: true,
@@ -82,7 +82,7 @@ if (strlen($announce) > 0) {
 </script>
 <BR>
 <div id="line"></div>
-<CENTER><H3><?php echo $poolname; ?> 矿池报酬变动</H3></CENTER>
+<CENTER><H3>矿池报酬变动</H3></CENTER>
 <div id="graphdiv4" style="width:100%; height:150px;"></div>
 <script type="text/javascript">
   g3 = new Dygraph(

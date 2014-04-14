@@ -109,16 +109,8 @@ function print_stats_bottom() {
 	$localafterbodyextras = "";
 	if (isset($GLOBALS["afterbodyextras"])) { $localafterbodyextras = $GLOBALS["afterbodyextras"]; }
 
-	print("<BR><div id=\"line\">");
-	print("<H3>MUCH MORE TO COME - PLEASE BE PATIENT</H3>
-<BR>
-Source code/bug submissions/feature requests: <A HREF=\"https://github.com/wizkid057/wizstats\">wizkid057/wizstats on github</A><BR>
-I'm working as quickly as I can to get these stats much more useful and presentable, but it is a time consuming process.<BR>
-Any donations will help me dedicate more time to development and would be greatly appreciated: <B><I>1Stats</I>Qytc7UEZ9sHJ9BGX2csmkj8XZr2</B><BR><BR>
-Thanks for using the new stats!<bR>
-<I>-wizkid057</I><BR>");
+	print('&copy;&nbsp;<script>document.write(new Date().getFullYear())</script>&nbsp;'.$GLOBALS["poolname"]);
 
-	print("<A HREF=\"".$GLOBALS["urlprefix"]."\">&lt;-- Back to Main Stats Page</A>");
 	print("</BODY>".$localafterbodyextras."</HTML>");
 
 }

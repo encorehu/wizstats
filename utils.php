@@ -275,11 +275,28 @@ function get_user_id_from_address($link, $addr) {
 	if ($user_id = apc_fetch($query_hash)) {
 		return $user_id;
 	} else {
+		$username = $addr;
+		$split_chars='_+/|,.:;\\-=`!@#$%^&*()<>\?';
+		$punc_pos = false;
+		for($fi = 0; $fi < strlen($split_chars);$fi ++){
+			$punc_pos = strpos($username, substr($split_chars,$fi,1));
+			if($punc_pos !== false){
+				break;
+			}
+		}
+		if($punc_pos !== false && $punc_pos>30){
+			# a bitcoind address must has atleast 30 chars, maybe 34
+			$addr=substr($username,0,$punc_pos);
+			$workername = strpbrk($username, $split_chars);
+		} else {
+			$addr = $username;
+			$workername = "";
+		}
 		$bits =  hex2bits(\Bitcoin::addressToHash160($addr));
 		#echo $bits;
 		# maybe hint that keyhash is bytea?
-		//$sql = "select id from public.users where keyhash='$bits' order by id asc limit 1";
-		$sql = "select id from public.users where username='$addr' order by id asc limit 1";
+		$sql = "select id from public.users where keyhash='$bits' order by id asc limit 1";
+		//$sql = "select id from public.users where username='$addr' order by id asc limit 1";
 		$result = pg_exec($link, $sql);
 		$numrows = pg_numrows($result);
 		if ($numrows > 0) {

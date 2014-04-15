@@ -650,7 +650,7 @@ if ($u16avghash > 0) {
 	$netdiff = round($netdiff,2);
 	print "<BR><B>预计收入</B><BR>";
 	print "<span style=\"font-size: 0.8em\">";
-	print "Your approximate maximum potential earnings at the current network difficulty of ".number_format($netdiff,2)." and maintaining your 3-hour average hash rate of ".prettyHashrate($u16avghash)." is ".prettySatoshis($satoshiperday)." per day.\n";
+	print "在当前比特币网络挖矿困难度( ".number_format($netdiff,2)." )条件下, 以你目前保持的 3小时平均算力 ".prettyHashrate($u16avghash)." 来计算, 你的最大潜在收入是  ".prettySatoshis($satoshiperday)." / 每天.\n";
 	print "</span>";
 	print "<BR><BR><HR>";
 }

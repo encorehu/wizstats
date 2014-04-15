@@ -29,6 +29,7 @@ if (!isset($_SERVER['PATH_INFO'])) {
 
 
 $givenuser = substr($_SERVER['PATH_INFO'],1,strlen($_SERVER['PATH_INFO'])-1);
+$givenuser = trim($givenuser);
 
 if ($givenuser == "") {
 	print_stats_top();

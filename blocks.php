@@ -33,9 +33,9 @@ if (!isset($subcall)) {
 	}
 
 	if (!$blocks_show_stale) {
-		print "<SMALL><A HREF=\"?show_stale=1\">(显示 stale/orphan blocks )</A></SMALL><BR>";
+		print "<SMALL><A HREF=\"?show_stale=1\">(显示 过期/孤立 区块 )</A></SMALL><BR>";
 	} else {
-		print "<SMALL><A HREF=\"?show_stale=0\">(隐藏 stale/orphan blocks )</A></SMALL><BR>";
+		print "<SMALL><A HREF=\"?show_stale=0\">(隐藏 过期/孤立 区块 )</A></SMALL><BR>";
 	}
 
 

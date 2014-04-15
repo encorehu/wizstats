@@ -60,7 +60,7 @@ function block_table_row($row,$isodd) {
 
 
 	$roundstart = substr($row["roundstart"],0,19);
-	if ($row["confirmations"] >= 120) { $confs = "Confirmed"; }
+	if ($row["confirmations"] >= 120) { $confs = "已确认"; }
 	else if ($row["confirmations"] == 0) { $confs = "Stale"; $luck = "n/a"; $roundstart = "<SMALL>(".substr($row["time"],0,19); $roundstart .= ")</SMALL>"; }
 	else { $confs = $row["confirmations"]." / 120"; }
 

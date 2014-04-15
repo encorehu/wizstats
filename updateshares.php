@@ -58,21 +58,20 @@ for($ri = 0; $ri < $numrows; $ri++) {
 	$user_id =  $row["id"];
 	$split_chars='_+/|,.:;\\-=`!@#$%^&*()<>\?';
 	$punc_pos = false;
-	for($fi = 0; $fi < count($split_chars);$fi ++){
-		$punc_pos = strpos($username,$split_chars[$fi]);
+	for($fi = 0; $fi < strlen($split_chars);$fi ++){
+		$punc_pos = strpos($username, substr($split_chars,$fi,1));
 		if($punc_pos !== false){
 			break;
 		}
 	}
 	if($punc_pos !== false && $punc_pos>30){
 		# a bitcoind address must has atleast 30 chars, maybe 34
-		$addr=substr($username,0,30);
+		$addr=substr($username,0,$punc_pos);
 		$workername = strpbrk($username, $split_chars);
 	} else {
 		$addr = $username;
 		$workername = "";
 	}
-
 	$bits =  hex2bits(\Bitcoin::addressToHash160($addr));
 	$sql = "update public.users set keyhash='$bits', workername='$workername' where id='$user_id';";
 	$result = pg_exec($link, $sql);

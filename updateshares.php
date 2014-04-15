@@ -40,12 +40,43 @@ if(pg_num_rows($result) > 0){
 
 if($firstsharetime==''){$firstsharetime='2014-04-04 00:18:45+08';}
 
-echo '$latestsharetime',$latestsharetime;
-echo '$firstsharetime',$firstsharetime;
+echo '$latestsharetime',$latestsharetime,'<br>';
+echo '$firstsharetime',$firstsharetime,'<br>';
 
 # All the work for this is done by postgresql, which is nice, under this query
 $sql = "insert into public.users(username) select distinct username from public.shares where username not in (select username from public.users);";
 $result = pg_exec($link, $sql);
+
+$sql = "select id,username from public.users where keyhash is NULL;";
+$result = pg_exec($link, $sql);
+$numrows = pg_numrows($result);
+
+for($ri = 0; $ri < $numrows; $ri++) {
+
+	$row = pg_fetch_array($result, $ri);
+	$username = $row["username"];
+	$user_id =  $row["id"];
+	$split_chars='_+/|,.:;\\-=`!@#$%^&*()<>\?';
+	$punc_pos = false;
+	for($fi = 0; $fi < count($split_chars);$fi ++){
+		$punc_pos = strpos($username,$split_chars[$fi]);
+		if($punc_pos !== false){
+			break;
+		}
+	}
+	if($punc_pos !== false && $punc_pos>30){
+		# a bitcoind address must has atleast 30 chars, maybe 34
+		$addr=substr($username,0,30);
+		$workername = strpbrk($username, $split_chars);
+	} else {
+		$addr = $username;
+		$workername = "";
+	}
+
+	$bits =  hex2bits(\Bitcoin::addressToHash160($addr));
+	$sql = "update public.users set keyhash='$bits', workername='$workername' where id='$user_id';";
+	$result = pg_exec($link, $sql);
+}
 
 $sql = "INSERT INTO $psqlschema.stats_shareagg (server, time, user_id, accepted_shares, rejected_shares, blocks_found, hashrate)
 select server, to_timestamp((date_part('epoch', time)::integer / 675::integer) * 675::integer) AS ttime, user_id,

@@ -37,7 +37,7 @@ function block_table_header() {
 	$blocks_header .= "<TH>年龄</TH>";
 	$blocks_header .= "<TH>开始时间</TH>";
 	$blocks_header .= "<TH>持续时间</TH>";
-	$blocks_header .= "<TH>已接受的 Shares</TH>";
+	$blocks_header .= "<TH>已接受股份数</TH>";
 	$blocks_header .= "<TH>困难度</TH>";
 	$blocks_header .= "<TH>运气</TH>";
 	$blocks_header .= "<TH>算力</TH>";

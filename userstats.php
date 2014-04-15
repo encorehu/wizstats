@@ -392,7 +392,7 @@ if (count($worker_data) > 1) {
 		if ($table != "") {
 
 			$pdata .= "<INPUT TYPE=\"BUTTON\" onClick=\"\$('#workeritems').toggle();\" VALUE=\"切换矿工明细\"><BR><BR>";
-			$pdata .= "<TABLE id=\"workeritems\" class=\"userstatsworkers\"><THEAD><TH  style=\"text-align: left;\">Worker Name</TH><TH  style=\"text-align: right;\">Hashrate</TH><TH  style=\"text-align: right;\">Accepted Weighted Shares</TH></THEAD>$table";
+			$pdata .= "<TABLE id=\"workeritems\" class=\"userstatsworkers\"><THEAD><TH  style=\"text-align: left;\">Worker Name</TH><TH  style=\"text-align: right;\">算力</TH><TH  style=\"text-align: right;\">已接受的股份数</TH></THEAD>$table";
 			if ($idleworkers) {
 				$idlelist = substr($idlelist,1,strlen($idlelist)-2).".";
 				$pdata .= "<TR BGCOLOR=\"#CCCCCC\"><TD COLSPAN=\"3\" style=\"white-space: normal; word-wrap:break-word;\"><B>Note</B>: There ".($idleworkers==1?"is":"are")." $idleworkers idle or no longer used worker".($idleworkers==1?"":"s")." that ".($idleworkers==1?"is":"are")." not shown in the table:<BR>$idlelist</TD></TR>";
@@ -411,7 +411,7 @@ if (count($worker_data) > 1) {
 }
 
 print "<div id=\"ugraphdiv2\" style=\"width:750px; height:375px;\"></div>";
-print "<INPUT TYPE=\"BUTTON\" onClick=\"showmax();\" VALUE=\"Toggle Graphing of Maximum Reward\"><BR>";
+print "<INPUT TYPE=\"BUTTON\" onClick=\"showmax();\" VALUE=\"切换到最大报酬图\"><BR>";
 print "<div id=\"ugraphdiv3\" style=\"width:750px; height:375px;\"></div>";
 
 #if (!isset($_GET["timemachine"])) {
@@ -434,7 +434,7 @@ print "<script type=\"text/javascript\">
 		'12 hour': { fillGraph: false, strokeWidth: 2.25, color: '#008080' },
 		labelsDivStyles: { border: '1px solid black' },
 		title: '算力图 ($givenuser)',
-		xlabel: 'Date',
+		xlabel: '时间',
 		ylabel: 'Mh/sec',
 		animatedZooms: true,
 		drawCallback: function(dg, is_initial) {
@@ -461,7 +461,7 @@ print "<script type=\"text/javascript\">
 		fillGraph: true,
 		labelsDivStyles: { border: '1px solid black' },
 		title: '余额图 ($givenuser)',
-		xlabel: 'Date',
+		xlabel: '时间',
 		ylabel: 'BTC',
 		animatedZooms: true,
 		drawCallback: function(dg, is_initial) {
@@ -569,7 +569,7 @@ if ($savedbal) {
 
 
 		if ($diff < 0) { $diff = 0; }
-		print "Approximately ".prettySatoshis($diff)." remaining to enter <A HREF=\"".$GLOBALS["urlprefix"]."payoutqueue.php#$givenuser\">payout queue</a>.";
+		print "大约还需要 ".prettySatoshis($diff)." 就进入 <A HREF=\"".$GLOBALS["urlprefix"]."payoutqueue.php#$givenuser\">支付队列</a>.";
 
 		if (($u16avghash == 0) && (isset($balupdate))) {
 			$timetoqueue = (3600*24*7) - (time() - $balupdate);
@@ -597,7 +597,7 @@ if ($savedbal) {
 			$shares = $diff / (2500000000/$netdiff);
 			$stime = $shares / ($u16avghash / 4294967296);
 			$netdiff = round($netdiff,2);
-			print " Maintaining your 3 hour hashrate average, this will take at least another ".prettyDuration($stime). " at current network difficulty of ".number_format($netdiff,2).".";
+			print " 以你保持目前3小时算力均值来看, 大约需要在 ".prettyDuration($stime). " 之后, 在当前比特币网络的困难度( ".number_format($netdiff,2).") 的条件下.";
 		}
 		if ($minpay != 4194304) { print "<BR><BR>Note: Your minimum payout was customized to ".prettySatoshis($minpay)." under 'My $poolname'."; }
 
@@ -657,7 +657,7 @@ if ($u16avghash > 0) {
 
 print "</div>";
 
-print "<BR><SMALL>(The data on this page is cached and updated periodically, generally about 30 seconds for the short-timeframe hashrate numbers, balances, and rejected shares data; and about 675 seconds for the graphs, longer-timeframe hashrate numbers, and other datas.</SMALL><BR>";
+print "<BR><SMALL>(本页面数据是定期更新的缓存数据, 以30秒钟的间隔更新一次你的短期算力数值, 余额, 和被拒绝的股份数目; 以 675秒的时间间隔更新图表, 长期算力数值, 和其他数据.</SMALL><BR>";
 print_stats_bottom();
 
 ?>

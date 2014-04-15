@@ -29,7 +29,7 @@ if (strlen($announce) > 0) {
 
 
 查看独立矿工状态, 使用 <?php echo $urlprefix;?>userstats.php/[你的矿工比特币地址] 页面查看.<BR>
-例如, <A HREF="<?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
+例如, <A HREF="<?php echo $urlprefix;?>userstats.php/1NBXu5bMqPB5AoZNq1ChcktnYaB9u5Xh1a"><?php echo $urlprefix;?>userstats.php/mpqVhGUSCPGm8YKqYKHJfwWSDg56rqRxHk</A>
 <BR><BR>
 <BR>
 <CENTER><H3>最近的块</H3></CENTER>

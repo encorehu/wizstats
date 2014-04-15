@@ -48,7 +48,7 @@ if (isset($blocklimit)) {
 } else {
 	###$blim = "limit 10";
 	$blim = "";
-	print "<SMALL>点击表格标题可以对数据进行排序</SMALL><BR><BR>";
+	print "<SMALL>点击表格标题栏可以对数据进行排序</SMALL><BR><BR>";
 }
 
 
@@ -87,7 +87,7 @@ for($ri = 0; $ri < $numrows; $ri++) {
 print block_table_end();
 
 if (!isset($subcall)) {
-	print "<BR>Confirmed blocks: $gc blocks --- Stale blocks: $oc blocks\n";
+	print "<BR>已确认区块: $gc 个 --- 过期区块: $oc 个\n";
 	print_stats_bottom();
 }
 

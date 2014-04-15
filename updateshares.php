@@ -92,7 +92,7 @@ from public.shares where time > '$firstsharetime' and to_timestamp((date_part('e
 
 $sql = "INSERT INTO $psqlschema.stats_shareagg (server, time, user_id, accepted_shares, rejected_shares, blocks_found, hashrate)
 select server, to_timestamp((date_part('epoch', time)::integer / 675::integer) * 675::integer) at time zone 'UTC' AS ttime, users.id as user_id,
-0+SUM(our_result::integer) as acceptedshares, COUNT(*)-SUM(our_result::integer) as rejectedshares, SUM(upstream_result::integer) as blocksfound,
+0+SUM(our_result::integer)*256 as acceptedshares, COUNT(*)-SUM(our_result::integer) as rejectedshares, SUM(upstream_result::integer) as blocksfound,
 ((SUM(our_result::integer) * POW(2, 40)) / 675) AS hashrate
 from public.shares left join users on shares.username=users.username where time > '$firstsharetime' and to_timestamp((date_part('epoch', time)::integer / 675::integer) * 675::integer) at time zone 'UTC'  < '$latestsharetime' and server=$serverid group by ttime, server, users.id;";
 $result = pg_exec($link, $sql);

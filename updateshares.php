@@ -51,11 +51,14 @@ $sql = "select id,username from public.users where keyhash is NULL;";
 $result = pg_exec($link, $sql);
 $numrows = pg_numrows($result);
 
+$sql_list=array();
+
 for($ri = 0; $ri < $numrows; $ri++) {
 
 	$row = pg_fetch_array($result, $ri);
 	$username = $row["username"];
 	$user_id =  $row["id"];
+
 	$split_chars='_+/|,.:;\\-=`!@#$%^&*()<>\?';
 	$punc_pos = false;
 	for($fi = 0; $fi < strlen($split_chars);$fi ++){
@@ -73,9 +76,13 @@ for($ri = 0; $ri < $numrows; $ri++) {
 		$workername = "";
 	}
 	$bits =  hex2bits(\Bitcoin::addressToHash160($addr));
-	$sql = "update public.users set keyhash='$bits', workername='$workername' where id='$user_id';";
+	$sql = "update public.users set keyhash='$bits', workername='$workername' where id=$user_id;";
+	$sql_list[] =$sql;
+}
+foreach ($sql_list as $sql) {
 	$result = pg_exec($link, $sql);
 }
+
 
 $sql = "INSERT INTO $psqlschema.stats_shareagg (server, time, user_id, accepted_shares, rejected_shares, blocks_found, hashrate)
 select server, to_timestamp((date_part('epoch', time)::integer / 675::integer) * 675::integer) AS ttime, user_id,

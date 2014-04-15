@@ -123,7 +123,12 @@ function block_table_row($row,$isodd) {
 
 	$blocks_row .= "<TD class=\"blockconfirms\" style=\"text-align: right;\">".$confs."</TD>";
 	if (isset($row['keyhash'])) {
-		$fulladdress =  \Bitcoin::hash160ToAddress(bits2hex($row['keyhash']));
+		if(substr($row['keyhash'],0,1) != '1'){
+			# maybe a testnet address
+			$fulladdress =  \Bitcoin::hash160ToAddress(bits2hex($row['keyhash']), BITCOIN_TESTNET_ADDRESS_VERSION);
+		} else {
+			$fulladdress =  \Bitcoin::hash160ToAddress(bits2hex($row['keyhash']));
+		}
 		$address = substr($fulladdress,0,10)."...";
 	} else {
 		$fulladdress = "";

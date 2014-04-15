@@ -14,6 +14,7 @@
  */
 
 define("BITCOIN_ADDRESS_VERSION", "00");// this is a hex byte
+define("BITCOIN_TESTNET_ADDRESS_VERSION", "6F");// this is a hex byte for testnet
 /**
  * Bitcoin utility functions class
  *

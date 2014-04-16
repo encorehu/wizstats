@@ -236,8 +236,8 @@ function get_worker_data_from_user_id($link, $user_id) {
 		return $worker_data;
 	} else {
 
-		//$sql = "select * from public.users where keyhash=(select keyhash from public.users where id=$user_id) order by id asc limit 128";
-		$sql = "select * from public.users where id=$user_id order by id asc limit 128";
+		$sql = "select * from public.users where keyhash=(select keyhash from public.users where id=$user_id) order by id asc limit 128";
+		//$sql = "select * from public.users where id=$user_id order by id asc limit 128";
 		$result = pg_exec($link, $sql);
 		$numrows = pg_numrows($result);
 		if ($numrows > 0) {

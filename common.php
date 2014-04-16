@@ -70,10 +70,6 @@ print("<HTML>
 <TD width=\"30%\" style=\"text-align: left\">算力:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px; white-space: nowrap;\" id=\"livehashrate\">$phash</TD>
 <TD width=\"25%\" style=\"text-align: left\">本轮时间:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"roundtime\">$roundduration</TD>
 </TR>
-<TR>
-<TD width=\"30%\" style=\"text-align: left\">股份:</TD><TD width=\"25%\" style=\"text-align: right; border-right:1px dotted #CCCCCC; padding-right: 3px;\" id=\"sharecounter\">$roundshares</TD>
-<TD width=\"25%\" style=\"text-align: left\">运气:</TD><TD width=\"20%\" style=\"text-align: right\" id=\"liveluck\">$liveluck%</TD>
-</TR>
 </TABLE>
 </div>
 <br>

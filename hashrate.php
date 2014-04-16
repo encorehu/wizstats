@@ -51,9 +51,9 @@ function get_hashrate_stats(&$link, $givenuser, $user_id)
 				}
 			}
 		}
-		$u12avghash = ($u12shares/(12*3600))*4294967296*256;
-		$u16avghash = ($u16shares/(3*3600))*4294967296*256;
-		$u2avghash = ($u2shares/(22.5*60))*4294967296*256;
+		$u12avghash = ($u12shares/(12*3600))*4294967296;
+		$u16avghash = ($u16shares/(3*3600))*4294967296;
+		$u2avghash = ($u2shares/(22.5*60))*4294967296;
 	}
 
 	# instant hashrates from CPPSRB

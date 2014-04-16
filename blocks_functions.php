@@ -93,7 +93,7 @@ function block_table_row($row,$isodd) {
 		$blocks_row .= "<td sorttable_customkey=\"".$row["duration"]."\" style=\"width: 1.5em;  text-align: right;\">$hours:$minutes:$seconds</td>";
 
 		if($row["duration"]>0){
-		    $hashrate = ($row["acceptedshares"] * 4294967296*256) / $row["duration"];
+		    $hashrate = ($row["acceptedshares"] * 4294967296) / $row["duration"];
 		} else {
 		    $hashrate = 0;
 		}

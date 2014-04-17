@@ -35,7 +35,6 @@ $cachehash = hash("sha256", $cachehash);
 $cacheddata = get_stats_cache($link, 20, $cachehash);
 
 if ($cacheddata != "") {
-	echo 'cacheddata<br>';
 	print $cacheddata;
 } else {
 

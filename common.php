@@ -82,7 +82,7 @@ print("<HTML>
     <li><a href=\"".$GLOBALS["urlprefix"]."\">首页</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."mystats.php\">我的状态</a></li>
     <li><a href=\"".$GLOBALS["urlprefix"]."blocks.php\">挖到的块</a></li>
-    <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">贡献者</a></li>
+    <li><a href=\"".$GLOBALS["urlprefix"]."topcontributors.php\">排行榜</a></li>
 </ul>
 </center>
 <br>

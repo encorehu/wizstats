@@ -50,11 +50,11 @@ print("<HTML>
 <TITLE>".$localtitleprepend.$GLOBALS["poolname"]." 矿池状态统计".$localtitleappend."</TITLE>
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">
 <!--[if lt IE 9]><script src=\"".$GLOBALS["urlprefix"]."IE9.js\"></script><![endif]-->
+<!--[if IE]><script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."excanvas.js\"></script><![endif]-->
 <script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."dygraph-combined.js\"></script>
 <script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."jquery.js\"></script>
 <script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."sortable.js\"></script>
 <script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."instantscripts.php/livedata$ldmain.js?rand=$rnd\"></script>
-<!--[if IE]><script type=\"text/javascript\" src=\"".$GLOBALS["urlprefix"]."excanvas.js\"></script><![endif]-->
 <link rel=\"stylesheet\" type=\"text/css\" href=\"".$GLOBALS["urlprefix"]."stats-style.css\">
 ".$localheadextras."
 </HEAD>

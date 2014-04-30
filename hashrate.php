@@ -75,15 +75,15 @@ function get_hashrate_stats(&$link, $givenuser, $user_id)
 	# build up return value, an array of maps containing structured information about the hash rate over each interval
 	$return_value = array();
 
-	add_interval_stats($return_value, 43200, "12 hours", floatval($u12avghash), intval($u12shares));
-	add_interval_stats($return_value, 10800, "3 hours", floatval($u16avghash), intval($u16shares));
-	add_interval_stats($return_value, 1350, "22.5 minutes", floatval($u2avghash), intval($u2shares));
+	add_interval_stats($return_value, 43200, "12 小时", floatval($u12avghash), intval($u12shares));
+	add_interval_stats($return_value, 10800, "3 小时", floatval($u16avghash), intval($u16shares));
+	add_interval_stats($return_value, 1350, "22.5 分钟", floatval($u2avghash), intval($u2shares));
 
 	for ($i = 256; $i > 127; $i = $i / 2) {
 		if (isset($my_shares)) {
-			add_interval_stats($return_value, $i, "$i seconds", ($my_shares[$i] * 4294967296) / $i, round($my_shares[$i]));
+			add_interval_stats($return_value, $i, "$i 秒", ($my_shares[$i] * 4294967296) / $i, round($my_shares[$i]));
 		} else {
-			add_interval_stats($return_value, $i, "$i seconds", 0, 0);
+			add_interval_stats($return_value, $i, "$i 秒", 0, 0);
 		}
 	}
 

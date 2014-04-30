@@ -35,10 +35,10 @@ if(pg_num_rows($result) > 0){
     $row = pg_fetch_array($result, 0);
     $firstsharetime = $row["fst"];
 }else{
-    $firstsharetime='2014-04-04 00:18:45+08';
+    $firstsharetime='2014-03-30 00:18:45';
 }
 
-if($firstsharetime==''){$firstsharetime='2014-04-04 00:18:45+08';}
+if($firstsharetime==''){$firstsharetime='2014-03-30 00:18:45';}
 
 echo '$latestsharetime',$latestsharetime,'<br>';
 echo '$firstsharetime',$firstsharetime,'<br>';
@@ -76,8 +76,11 @@ for($ri = 0; $ri < $numrows; $ri++) {
 		$workername = "";
 	}
 	$bits =  hex2bits(\Bitcoin::addressToHash160($addr));
-	$sql = "update public.users set keyhash='$bits', workername='$workername' where id=$user_id;";
-	$sql_list[] =$sql;
+	if(strlen($bits)==160){
+	    //if not equal 160, maybe not valid BITCOIN ADDRESS.
+	    $sql = "update public.users set keyhash='$bits', workername='$workername' where id=$user_id;";
+	    $sql_list[] =$sql;
+	}
 }
 foreach ($sql_list as $sql) {
 	$result = pg_exec($link, $sql);

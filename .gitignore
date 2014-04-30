@@ -1,6 +1,8 @@
 config.php
 announce.txt
 old/
+xhprof_html/
+xhprof_lib/
 *.old
 *.prj
 *.pui
